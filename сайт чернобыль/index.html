@@ -3,11 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторная работа №1</title>
+    <title>История Чернобыля</title>
   
-    <meta property="og:title" content="Заголовок страницы в OG">
-    <meta property="og:description" content="Описание страницы в OG">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
 <link rel="icon" href="rad.png.png" type="image/png">
@@ -184,13 +181,15 @@
 
         .btn-slide .title-hover {
             left: 150px;
-            opacity: 0;
+            opacity : 0;
             color: #00d406;
         }
 
-        .btn-slide .title {
-            opacity: 1;
-        }
+     .btn-slide .title-hover {
+    left: 150px;
+    opacity: 0;  
+    color: #00d406;
+}
 
         main {
             max-width: 1200px;
@@ -320,134 +319,76 @@
             text-decoration: underline;
         }
         
-        .registration-form { display: flex; flex-direction: column; gap: 20px; margin: 20px 0; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-group label { color: #01fc0a; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-        .form-group input, .form-group select { padding: 12px 15px; border-radius: 10px; border: 2px solid #01fc0a; background: rgba(30, 30, 30, 0.9); color: #fff; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #01fc0a; box-shadow: 0 0 15px rgba(1, 252, 10, 0.3); }
-        .submit-btn { background: linear-gradient(135deg, #006603, #01fc0a); color: #000; border: none; padding: 18px 30px; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; }
-        .submit-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(1, 252, 10, 0.4); }
-        .message { margin-top: 25px; padding: 20px; border-radius: 10px; text-align: center; font-weight: 600; }
-        .success { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 2px solid #00ff00; }
-        .error { background: rgba(255, 0, 0, 0.1); color: #ff5555; border: 2px solid #ff5555; }
-        .benefits-list { list-style: none; padding: 0; }
-        .benefits-list li { color: #E0E0E0; margin: 12px 0; padding: 12px; background: rgba(1, 252, 10, 0.05); border-radius: 8px; border-left: 3px solid #01fc0a; }
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
         
+        .history-table th {
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #01fc0a;
+        }
         
-        .calculator {
+        .history-table td {
             background: rgba(30, 30, 30, 0.9);
-            padding: 25px;
-            border-radius: 15px;
+            color: #E0E0E0;
+            padding: 12px 15px;
+            text-align: center;
+            border: 2px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+        
+        .history-table tr:nth-child(even) td {
+            background: rgba(40, 40, 40, 0.9);
+        }
+        
+        .history-table tr:hover td {
+            background: rgba(1, 252, 10, 0.1);
+            transform: scale(1.01);
+        }
+        
+        .table-title {
+            color: #01fc0a;
+            font-size: 1.4em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px solid #01fc0a;
+            padding-bottom: 10px;
+        }
+        
+        .table-container {
+            background: rgba(40, 40, 40, 0.6);
+            padding: 20px;
+            border-radius: 10px;
             border: 2px solid #01fc0a;
             margin: 20px 0;
         }
         
-        .calculator h3 {
+        .fact-highlight {
             color: #01fc0a;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .calc-controls {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        
-        @media (max-width: 768px) {
-            .calc-controls {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .calc-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .calc-group label {
-            color: #01fc0a;
-            font-weight: 600;
-            font-size: 16px;
-        }
-        
-        .calc-group select, 
-        .calc-group input {
-            padding: 12px 15px;
-            border-radius: 10px;
-            border: 2px solid #01fc0a;
-            background: rgba(40, 40, 40, 0.9);
-            color: #fff;
-            font-size: 16px;
-        }
-        
-        .calc-result {
-            background: rgba(1, 252, 10, 0.1);
-            border: 2px solid #01fc0a;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-            text-align: center;
-        }
-        
-        .calc-total {
-            font-size: 28px;
             font-weight: bold;
-            color: #01fc0a;
-            margin: 15px 0;
         }
         
-        .calc-details {
-            margin-top: 15px;
-            text-align: left;
-            color: #E0E0E0;
-            font-size: 14px;
+        .danger-cell {
+            background: rgba(255, 50, 50, 0.2) !important;
+            color: #ff6666;
         }
         
-        .calc-btn {
-            background: linear-gradient(135deg, #006603, #01fc0a);
-            color: #000;
-            border: none;
-            padding: 15px 25px;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
-            transition: all 0.3s ease;
+        .safe-cell {
+            background: rgba(0, 255, 0, 0.1) !important;
+            color: #00ff00;
         }
         
-        .calc-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(1, 252, 10, 0.4);
-        }
-        
-        .safety-item {
-            margin: 12px 0;
-            padding: 12px;
-            background: rgba(1, 252, 10, 0.05);
-            border-radius: 8px;
-            border-left: 3px solid #01fc0a;
-            transition: all 0.3s ease;
-        }
-        
-        .safety-item:hover {
-            background: rgba(1, 252, 10, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .read-more-section {
-            background: rgba(1, 252, 10, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid #01fc0a;
-            margin: 30px 0;
-            text-align: center;
-        }
-
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -480,8 +421,8 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity : 0; transform: translateY(20px); }
+            to { opacity : 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
@@ -557,6 +498,10 @@
         font-size: 1.3em;
         padding-bottom: 8px;
         margin-bottom: 15px;
+        text-align: center;
+    }
+    .table-title {
+        font-size: 1.1em;
     }
     .section-content {
         grid-template-columns: 1fr;
@@ -574,60 +519,20 @@
     img {
         max-width: 100%;
         height: auto;
-        border-radius: 8px;
+        margin: 10px auto;
     }
-    .registration-form {
-        gap: 15px;
-    }
-    .form-group {
-        gap: 6px;
-    }
-    .form-group label {
-        font-size: 14px;
-    }
-    .form-group input,.form-group select {
-        padding: 10px 12px;
-        font-size: 14px;
-    }
-    .submit-btn {
-        padding: 15px 20px;
-        font-size: 16px;
-    }
-    .calculator {
-        padding: 15px;
-    }
-    .calc-controls {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    .calc-group label {
-        font-size: 14px;
-    }
-    .calc-group select,.calc-group input {
-        padding: 10px 12px;
-        font-size: 14px;
-    }
-    .calc-btn {
-        padding: 12px 20px;
-        font-size: 16px;
-    }
-    .calc-result {
-        padding: 15px;
-    }
-    .calc-total {
-        font-size: 22px;
-    }
-    .calc-details {
-        font-size: 12px;
-    }
-    .benefits-list li {
+    .table-container {
         padding: 10px;
+        margin: 15px 0;
+        overflow-x: auto;
+    }
+    .history-table {
+        font-size: 0.8em;
+        min-width: 600px;
+    }
+    .history-table th,.history-table td {
+        padding: 8px 10px;
         font-size: 0.9em;
-        margin: 8px 0;
-    }
-    .safety-item {
-        padding: 10px;
-        margin: 8px 0;
     }
     .back-to-top {
         bottom: 20px;
@@ -641,25 +546,11 @@
         margin-top: 30px;
         font-size: 14px;
     }
-    footer p {
-        margin-bottom: 8px;
-    }
-    .content-section:hover {
-        transform: none;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    p:hover {
-        transform: none;
-    }
-    img:hover {
+    .content-section:hover,.history-table tr:hover td,p:hover,img:hover {
         transform: none;
     }
     .btn-slide:hover .circle i {
         transform: none;
-    }
-    .calc-btn:hover,.submit-btn:hover {
-        transform: none;
-        box-shadow: 0 5px 15px rgba(1,252,10,0.3);
     }
 }
 
@@ -670,7 +561,7 @@
         text-shadow: none !important;
         animation: none !important;
     }
-    header,nav,.back-to-top,.registration-form,.calculator,.benefits,.login-section,.contact-support,.read-more-section,.submit-btn,.calc-btn {
+    header,nav,.back-to-top,.btn-slide {
         display: none !important;
     }
     .content-section {
@@ -679,16 +570,47 @@
         border: 1px solid #000 !important;
         box-shadow: none !important;
         page-break-inside: avoid;
+        break-inside: avoid;
     }
-    h1,h2 {
+    h1,h2,.table-title {
         color: #000 !important;
         text-shadow: none !important;
     }
-    p,li {
+    p {
         color: #000 !important;
         background: none !important;
-        border-left: none !important;
-        padding: 5px 0 !important;
+        border: 1px solid #000 !important;
+        padding: 10px !important;
+        margin: 10px 0 !important;
+    }
+    .table-container {
+        background: #fff !important;
+        border: 1px solid #000 !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .history-table {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+    .history-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+    .history-table td {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+    .danger-cell,.safe-cell {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    .fact-highlight,.highlight {
+        color: #000 !important;
+        background: none !important;
+        font-weight: bold;
     }
     a {
         color: #000 !important;
@@ -696,7 +618,7 @@
     }
     img {
         border: 1px solid #000 !important;
-        max-width: 300px !important;
+        max-width: 250px !important;
     }
     footer {
         background: #fff !important;
@@ -710,7 +632,7 @@
   <body>
     <header>
       <h1>Сайт студента группы ПИ25А Дубовик Веры Александровны</h1>
-      <p>Экскурсии в Чернобыльскую Зону Отчуждения</p>
+      <p>История Чернобыльской катастрофы</p>
       
       <nav>
         <a class="btn-slide" href="index.html">
@@ -727,414 +649,187 @@
           <span class="title">О поездках</span>
         </a>
         
-        <a class="btn-slide" href="contacts.html">
+        <a class="btn-slide" href="history.html">
           <span class="circle">
-            <i class="fas fa-phone"></i>
+            <i class="fas fa-history"></i>
           </span>
-          <span class="title">Контакты</span>
+          <span class="title">История</span>
         </a>
-
-           <a class="btn-slide" href="static.html">
+        
+        <a class="btn-slide" href="static.html">
           <span class="circle">
             <i class="fas fa-chart-line"></i>
           </span>
           <span class="title">Статистика</span>
         </a>
 
-             <a class="btn-slide" href="history.html">
+        <a class="btn-slide" href="contacts.html">
           <span class="circle">
-            <i class="fas fa-history"></i>
+            <i class="fas fa-phone"></i>
           </span>
-          <span class="title">История</span>
+          <span class="title">Контакты</span>
         </a>
       </nav>
     </header>
     
     <main>
-<div class="content-section">
-    <h2><i class="fas fa-user-plus"></i> Регистрация на экскурсию</h2>
-    <div class="section-content">
-        <div class="text-content">
-            <p><span class="highlight">Забронируйте место на экскурсию прямо сейчас!</span></p>
-            
-            <form id="registrationForm" class="registration-form">
-                <div class="form-group">
-                    <label for="name"><i class="fas fa-user"></i> ФИО:</label>
-                    <input type="text" id="name" name="name" required 
-                           placeholder="Введите ваше полное имя">
-                </div>
-                
-                <div class="form-group">
-                    <label for="email"><i class="fas fa-envelope"></i> Email:</label>
-                    <input type="email" id="email" name="email" required 
-                           placeholder="example@mail.com">
-                </div>
-                
-                <div class="form-group">
-                    <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
-                    <input type="tel" id="phone" name="phone" required 
-                           placeholder="+7 (XXX) XXX-XX-XX">
-                </div>
-                
-                <div class="form-group">
-                    <label for="password"><i class="fas fa-lock"></i> Пароль:</label>
-                    <input type="password" id="password" name="password" required 
-                           placeholder="Создайте надежный пароль">
-                </div>
-                
-                <div class="form-group">
-                    <label for="tour_type"><i class="fas fa-calendar"></i> Выберите тур:</label>
-                    <select id="tour_type" name="tour_type">
-                        <option value="однодневный">Классический однодневный тур (от 100$)</option>
-                        <option value="двухдневный">Программа глубокого погружения (2 дня, от 250$)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="participants"><i class="fas fa-users"></i> Количество человек:</label>
-                    <input type="number" id="participants" name="participants" 
-                           min="1" max="20" value="1">
-                </div>
-                
-                <div class="form-group">
-                    <label for="preferred_date"><i class="fas fa-calendar-alt"></i> Предпочтительная дата:</label>
-                    <input type="date" id="preferred_date" name="preferred_date">
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> Зарегистрироваться на экскурсию
-                </button>
-            </form>
-            
-            <div id="message" class="message"></div>
-            
-            <div class="login-section">
-                <p>Уже зарегистрированы? <a href="#" id="showLogin">Войдите в аккаунт</a></p>
-            </div>
-        </div>
-        
-        <div class="benefits">
-            <h3><i class="fas fa-gift"></i> Что дает регистрация?</h3>
-            <ul class="benefits-list">
-                <li><i class="fas fa-check-circle"></i> Бронирование места в группе</li>
-                <li><i class="fas fa-star"></i> Специальные условия для участников</li>
-                <li><i class="fas fa-bell"></i> Уведомление о новых турах</li>
-                <li><i class="fas fa-lock"></i> Доступ к эксклюзивным материалам</li>
-                <li><i class="fas fa-headset"></i> Поддержка 24/7</li>
-            </ul>
-            
-            <div class="calculator">
-                <h3><i class="fas fa-calculator"></i> Калькулятор стоимости тура</h3>
-                
-                <div class="calc-controls">
-                    <div class="calc-group">
-                        <label for="calcTourType"><i class="fas fa-map-marked-alt"></i> Тип тура:</label>
-                        <select id="calcTourType">
-                            <option value="100">Однодневный тур - 100$</option>
-                            <option value="200">Двухдневный тур - 200$</option>
-                            <option value="300">Трехдневный тур - 300$</option>
-                        </select>
-                    </div>
-                    
-                    <div class="calc-group">
-                        <label for="calcPeopleCount"><i class="fas fa-users"></i> Количество человек:</label>
-                        <input type="number" id="calcPeopleCount" min="1" value="1">
-                    </div>
-                    
-                    <div class="calc-group">
-                        <label for="calcDiscount"><i class="fas fa-percentage"></i> Скидка:</label>
-                        <select id="calcDiscount">
-                            <option value="0">Нет</option>
-                            <option value="5">5% (группа 5+ чел)</option>
-                            <option value="10">10% (группа 10+ чел)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="calc-group">
-                        <label><i class="fas fa-info-circle"></i> Расчет:</label>
-                        <button type="button" class="calc-btn" onclick="calculateTourCost()">
-                            <i class="fas fa-calculator"></i> Рассчитать стоимость
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="calc-result" id="calcResult">
-                    <h4><i class="fas fa-file-invoice-dollar"></i> Итого к оплате:</h4>
-                    <div class="calc-total" id="totalCost">100.00$</div>
-                    
-                    <div class="calc-details" id="breakdown">
-                        <p><i class="fas fa-tag"></i> Стоимость тура: 100$</p>
-                        <p><i class="fas fa-user-friends"></i> Количество человек: 1</p>
-                        <p><i class="fas fa-percentage"></i> Скидка: 0%</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="contact-support">
-                <h4><i class="fas fa-headset"></i> Нужна помощь?</h4>
-                <p>Звоните: <strong>+7 (XXX) XXX-XX-XX</strong></p>
-                <p>Пишите: <strong>chernobyl-tours@example.com</strong></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="content-section" id="loginFormSection" style="display: none;">
-    <h2><i class="fas fa-sign-in-alt"></i> Вход в аккаунт</h2>
-    <div class="section-content">
-        <div class="text-content">
-            <form id="loginForm" class="registration-form">
-                <div class="form-group">
-                    <label for="loginEmail"><i class="fas fa-envelope"></i> Email:</label>
-                    <input type="email" id="loginEmail" name="email" required 
-                           placeholder="Ваш email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="loginPassword"><i class="fas fa-lock"></i> Пароль:</label>
-                    <input type="password" id="loginPassword" name="password" required 
-                           placeholder="Ваш пароль">
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-sign-in-alt"></i> Войти
-                </button>
-            </form>
-            
-            <div id="loginMessage" class="message"></div>
-            
-            <p>Нет аккаунта? <a href="#" id="showRegister">Зарегистрируйтесь</a></p>
-        </div>
-        
-        <div class="login-info">
-            <h3><i class="fas fa-shield-alt"></i> Безопасность данных</h3>
-            <p>Все ваши данные защищены и используются только для организации экскурсий.</p>
-        </div>
-    </div>
-</div>
-
-<script>
-function calculateTourCost() {
-    const tourPrice = parseFloat(document.getElementById('calcTourType').value);
-    const people = parseInt(document.getElementById('calcPeopleCount').value);
-    const discount = parseFloat(document.getElementById('calcDiscount').value);
-
-    let total = tourPrice * people;
-    let finalDiscount = 0;
-
-    if (discount > 0) {
-        finalDiscount = discount;
-        total = total * (1 - discount / 100);
-    }
-
-    document.getElementById('totalCost').textContent = total.toFixed(2) + '$';
-
-    document.getElementById('breakdown').innerHTML = `
-        <p><i class="fas fa-tag"></i> Стоимость тура: ${tourPrice}$</p>
-        <p><i class="fas fa-user-friends"></i> Количество человек: ${people}</p>
-        <p><i class="fas fa-percentage"></i> Скидка: ${finalDiscount}%</p>
-    `;
-    
-    const resultElement = document.getElementById('calcResult');
-    resultElement.style.transform = 'scale(1.05)';
-    setTimeout(() => {
-        resultElement.style.transform = 'scale(1)';
-        resultElement.style.transition = 'transform 0.3s ease';
-    }, 300);
-}
-</script>
-
-<script>
-    const registrationForm = document.getElementById('registrationForm');
-    const loginForm = document.getElementById('loginForm');
-    const messageDiv = document.getElementById('message');
-    const loginMessageDiv = document.getElementById('loginMessage');
-    const showLoginLink = document.getElementById('showLogin');
-    const showRegisterLink = document.getElementById('showRegister');
-    const loginFormSection = document.getElementById('loginFormSection');
-
-    if (registrationForm) {
-        registrationForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            try {
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Регистрация...';
-                submitBtn.disabled = true;
-                
-                const response = await fetch('http://localhost:8000/api/register', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    messageDiv.textContent = ` ${data.message}`;
-                    messageDiv.className = 'message success';
-                    registrationForm.reset();
-                    
-                    document.getElementById('loginEmail').value = formData.get('email');
-                    document.getElementById('loginPassword').value = formData.get('password');
-                    
-                    setTimeout(() => {
-                        showLoginForm();
-                    }, 3000);
-                } else {
-                    messageDiv.textContent = ` ${data.detail}`;
-                    messageDiv.className = 'message error';
-                }
-            } catch (error) {
-                console.error('Ошибка:', error);
-                messageDiv.textContent = ' Ошибка подключения к серверу. Проверьте, запущен ли сервер FastAPI.';
-                messageDiv.className = 'message error';
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-    }
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            
-            try {
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Вход...';
-                submitBtn.disabled = true;
-                
-                const response = await fetch('http://localhost:8000/api/login', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const data = await response.json();
-                
-                if (response.ok) {
-                    loginMessageDiv.textContent = ` ${data.message} Добро пожаловать, ${data.name}!`;
-                    loginMessageDiv.className = 'message success';
-                    localStorage.setItem('user', JSON.stringify(data));
-                    
-                    setTimeout(() => {
-                        window.location.href = '/';
-                    }, 2000);
-                } else {
-                    loginMessageDiv.textContent = ` ${data.detail}`;
-                    loginMessageDiv.className = 'message error';
-                }
-            } catch (error) {
-                loginMessageDiv.textContent = ' Ошибка подключения к серверу';
-                loginMessageDiv.className = 'message error';
-            } finally {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }
-        });
-    }
-
-    if (showLoginLink) {
-        showLoginLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            showLoginForm();
-        });
-    }
-
-    if (showRegisterLink) {
-        showRegisterLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            loginFormSection.style.display = 'none';
-            const registrationSection = document.querySelector('.content-section:nth-last-child(2)');
-            if (registrationSection) {
-                registrationSection.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    }
-
-    function showLoginForm() {
-        loginFormSection.style.display = 'block';
-        loginFormSection.scrollIntoView({ behavior: 'smooth' });
-        loginFormSection.style.opacity = '0';
-        loginFormSection.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            loginFormSection.style.opacity = '1';
-            loginFormSection.style.transform = 'translateY(0)';
-            loginFormSection.style.transition = 'all 0.6s ease-out';
-        }, 100);
-    }
-
-    const savedUser = localStorage.getItem('user');
-    if (savedUser) {
-        const user = JSON.parse(savedUser);
-        console.log('Авторизованный пользователь:', user.name);
-    }
-</script>
       <div class="content-section">
-        <h2><i class="fas fa-door-open"></i> Добро пожаловать</h2>
+        <h2><i class="fas fa-history"></i> Хронология аварии на ЧАЭС</h2>
+        <p>Авария на Чернобыльской АЭС стала крупнейшей техногенной катастрофой в истории атомной энергетики. Представляем хронологию ключевых событий.</p>
+        
+        <div class="table-container">
+          <h3 class="table-title">Таблица 1: Хронология событий 26 апреля 1986 года</h3>
+          <table class="history-table">
+            <tr>
+              <th>Время</th>
+              <th>Событие</th>
+              <th>Последствия</th>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">01:23:44</span></td>
+              <td>Начало эксперимента на 4-м энергоблоке</td>
+              <td>Мощность реактора упала до 30 МВт</td>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">01:23:45</span></td>
+              <td>Нажата кнопка аварийной защиты АЗ-5</td>
+              <td>Стержни начали погружение в активную зону</td>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">01:23:47</span></td>
+              <td>Первый тепловой взрыв</td>
+              <td>Разрушение верхней защитной плиты (схема "Елена")</td>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">01:23:48</span></td>
+              <td>Второй взрыв</td>
+              <td>Полное разрушение реактора, выброс радиоактивных материалов</td>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">01:26:03</span></td>
+              <td>Сработала пожарная сигнализация</td>
+              <td>Прибытие первой пожарной команды</td>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">05:00</span></td>
+              <td>Начало эвакуации Припяти</td>
+              <td>Подготовка 1200 автобусов</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="table-container">
+          <h3 class="table-title">Таблица 2: Уровни радиации в ключевых точках (мкР/ч)</h3>
+          <table class="history-table">
+            <tr>
+              <th>Местоположение</th>
+              <th>26.04.1986</th>
+              <th>26.04.1996</th>
+              <th>26.04.2006</th>
+              <th>26.04.2024</th>
+            </tr>
+            <tr>
+              <td>4-й энергоблок ЧАЭС</td>
+              <td class="danger-cell">> 100,000</td>
+              <td class="danger-cell">50,000</td>
+              <td class="danger-cell">5,000</td>
+              <td class="danger-cell">500</td>
+            </tr>
+            <tr>
+              <td>Проспект Ленина, Припять</td>
+              <td class="danger-cell">25,000</td>
+              <td class="danger-cell">1,200</td>
+              <td>350</td>
+              <td class="safe-cell">80</td>
+            </tr>
+            <tr>
+              <td>КПП "Дитятки"</td>
+              <td class="danger-cell">2,500</td>
+              <td>180</td>
+              <td class="safe-cell">60</td>
+              <td class="safe-cell">25</td>
+            </tr>
+            <tr>
+              <td>Рыжий лес</td>
+              <td class="danger-cell">> 100,000</td>
+              <td class="danger-cell">10,000</td>
+              <td class="danger-cell">2,500</td>
+              <td class="danger-cell">800</td>
+            </tr>
+            <tr>
+              <td>Чернобыль (город)</td>
+              <td class="danger-cell">1,500</td>
+              <td>120</td>
+              <td class="safe-cell">45</td>
+              <td class="safe-cell">20</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="table-container">
+          <h3 class="table-title">Таблица 3: Сравнение экскурсионных программ</h3>
+          <table class="history-table">
+            <tr>
+              <th>Параметр</th>
+              <th>Однодневный тур</th>
+              <th>Двухдневный тур</th>
+            </tr>
+            <tr>
+              <td><span class="fact-highlight">Стоимость</span></td>
+              <td><span class="fact-highlight">100$</span></td>
+              <td><span class="fact-highlight">250$</span></td>
+            </tr>
+            <tr>
+              <td>Включено в стоимость</td>
+              <td>Транспорт, гид, обед</td>
+              <td>+ ночевка, ужин</td>
+            </tr>
+            <tr>
+              <td>Основные объекты</td>
+              <td>8 объектов</td>
+              <td>14 объектов</td>
+            </tr>
+            <tr>
+              <td>Время в Зоне</td>
+              <td>8 часов</td>
+              <td>20 часов</td>
+            </tr>
+            <tr>
+              <td>Максимальный размер группы</td>
+              <td>15 человек</td>
+              <td>12 человек</td>
+            </tr>
+          </table>
+        </div>
+
         <div class="section-content">
           <div class="text-content">
-            <p><span class="highlight">Зона отчуждения. Поездка во времени.</span></p>
-            <p>Добро пожаловать в пространство, где остановилось время. Чернобыль — это не просто точка на карте, а многогранная история: памятник человеческой смелости и хрупкости, урок всему миру и невероятный пример возрождения природы. Мы проводим экскурсии, которые разрушают стереотипы и помогают увидеть за заброшенными фасадами судьбы людей, масштаб подвига и тихий голос Полесья, которое продолжает жить. Это путешествие для думающих.</p>
+            <p><span class="highlight"><i class="fas fa-radiation"></i> Интересные факты:</span></p>
+            <p>• Первыми на место аварии прибыли пожарные из воинской части №6, расположенной в Припяти</p>
+            <p>• Для ликвидации последствий аварии было мобилизовано более 600,000 человек</p>
+            <p>• "Рыжий лес" получил свое название из-за того, что сосны погибли и стали рыжего цвета</p>
+            <p>• Строительство "Укрытия" (Саркофага) было завершено за 206 дней</p>
+            <p>• Новый безопасный конфайнмент (НБК) был завершен в 2016 году и рассчитан на 100 лет</p>
           </div>
-          <img width="350" src="https://masterpiecer-images.s3.yandex.net/17978d2577b411eea7923a7ca4cc1bdc:upscaled" alt="Чернобыльская зона">
+          <img width="350" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Chernobyl_NPP_Sarcophagus_2016.jpg/1200px-Chernobyl_NPP_Sarcophagus_2016.jpg" alt="Саркофаг ЧАЭС">
         </div>
       </div>
       
       <div class="content-section">
-        <h2><i class="fas fa-map-marked-alt"></i> Что Вас ждет?</h2>
+        <h2><i class="fas fa-book-open"></i> Историческая справка</h2>
         <div class="section-content">
-          <img width="350" src="https://avatars.mds.yandex.net/get-shedevrum/16311338/img_99da3b23221211f098e6228f8b751de6/orig" alt="Маршрут экскурсии">
+          <img width="350" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pripyat_montage.jpg/800px-Pripyat_montage.jpg" alt="Припять">
           <div class="text-content">
-            <p><span class="highlight">Маршрут памяти и осознания</span></p>
-            <p><i class="fas fa-ghost"></i> <span class="highlight">Припять-город-призрак:</span> Пройдемся по пустым проспектам и этажам, где когда-то кипела жизнь самого молодого города СССР. Школа, бассейн, парк аттракционов — здесь каждый объект говорит без слов.</p>
+            <p><span class="highlight">Город Припять</span> был основан 4 февраля 1970 года как город-спутник для работников Чернобыльской АЭС. На момент аварии в нем проживало 49,360 человек.</p>
             
-            <p><i class="fas fa-industry"></i> <span class="highlight">ЧАЭС и новый безопасный конфайнмент:</span> Увидим легендарную станцию с безопасного расстояния и грандиозный «Укрытие», символ преодоления последствий аварии.</p>
+            <p><span class="highlight">Эвакуация</span> началась 27 апреля в 14:00. За 3 часа было эвакуировано всё население города на 1200 автобусах. Людям сказали, что эвакуация временная - на 3 дня.</p>
             
-            <p><i class="fas fa-user-secret"></i> <span class="highlight">Тайны Зоны:</span> Посетим заброшенные объекты, например, загоризонтную РЛС «Дуга» («русский дятел») или секретный город Чернобыль-2.</p>
+            <p><span class="highlight">Зона отчуждения</span> была установлена в радиусе 30 км от станции. Сегодня её площадь составляет примерно 2600 км².</p>
             
-            <p><i class="fas fa-leaf"></i> <span class="highlight">Возрождение природы:</span> Убедимся, как дикая флора и фауна, не скованная присутствием человека, превратила Зону в уникальный заповедник.</p>
-            
-            <p><i class="fas fa-users"></i> <span class="highlight">Встреча с самосёлами:</span> По возможности навестим тех, кто, вопреки всему, вернулся в свои дома. Живая история в лицах.</p>
+            <p><span class="highlight">Самосёлы</span> - около 100-150 человек (в основном пожилые), которые вернулись в свои дома в Зоне отчуждения вопреки запретам.</p>
           </div>
         </div>
       </div>
-      
-      <div class="content-section">
-        <h2><i class="fas fa-exclamation-triangle"></i> Предупреждение</h2>
-        <div class="section-content">
-             <img width="350" src="https://cdn-icons-png.flaticon.com/512/2878/2878126.png">
-          <div class="text-content">
-            <p><span class="highlight">Это не развлечение. Это осознанный опыт.</span></p>
-            <p>Экскурсия в Чернобыльскую зону отчуждения — не туристический аттракцион. Это глубокое и порой эмоционально сложное погружение в историю.</p>
-            
-            <div class="safety-item">
-              <p><i class="fas fa-shield-alt"></i> <span class="highlight">Безопасность — прежде всего:</span> Все маршруты согласованы, уровни радиации контролируются дозиметрами. Строго соблюдайте все инструкции гида: не садитесь на землю, не прикасайтесь к постройкам и предметам, не заходите в неразрешенные зоны.</p>
-            </div>
-            
-            <div class="safety-item">
-              <p><i class="fas fa-hands-helping"></i> <span class="highlight">Этика посещения:</span> Мы в гостях у памяти. Относитесь к местам и возможным встречам с уважением. Любые проявления вандализма, неуважения или попытки взять «сувенир» недопустимы.</p>
-            </div>
-            
-            <div class="safety-item">
-              <p><i class="fas fa-heartbeat"></i> <span class="highlight">Здоровье и доступность:</span> Поездка предполагает длительные пешие переходы, подъем по лестницам. Не рекомендуется беременным, лицам до 18 лет и людям с серьезными хроническими заболеваниями.</p>
-            </div>
-            
-            <div class="safety-item">
-              <p><i class="fas fa-file-signature"></i> <span class="highlight">Ваша ответственность:</span> Вы самостоятельно оцениваете свои физические и моральные силы для этого путешествия. Вы обязаны подписать правила поведения в Зоне.</p>
-            </div>
-            
-            <p><span class="highlight">Готовы ли вы увидеть историю своими глазами?</span></p>
-          </div>
-        </div>
-      </div>
-      
     </main>
 
     <div class="back-to-top" id="backToTop">
@@ -1147,60 +842,6 @@ function calculateTourCost() {
         <a href="https://ru.wikipedia.org/wiki/Чернобыль">https://ru.wikipedia.org/wiki/Чернобыль</a>
       </p>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Страница загружена');
-            
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach((section, index) => {
-                section.style.opacity = '0';
-                section.style.transform = 'translateY(30px)';
-                section.style.transition = 'all 0.6s ease-out';
-                
-                setTimeout(() => {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }, 300 + index * 200);
-            });
-
-            const buttons = document.querySelectorAll('.btn-slide');
-            buttons.forEach((button, index) => {
-                button.style.opacity = '0';
-                button.style.transform = 'translateY(10px)';
-                
-                setTimeout(() => {
-                    button.style.opacity = '1';
-                    button.style.transform = 'translateY(0)';
-                    button.style.transition = 'all 0.5s ease-out';
-                }, 500 + index * 100);
-            });
-
-            const paragraphs = document.querySelectorAll('.text-content p');
-            paragraphs.forEach((p, index) => {
-                p.style.opacity = '0';
-                p.style.transform = 'translateX(-20px)';
-                
-                setTimeout(() => {
-                    p.style.opacity = '1';
-                    p.style.transform = 'translateX(0)';
-                    p.style.transition = 'all 0.5s ease-out';
-                }, 700 + index * 50);
-            });
-            
-            const safetyItems = document.querySelectorAll('.safety-item');
-            safetyItems.forEach((item, index) => {
-                item.style.opacity = '0';
-                item.style.transform = 'translateY(20px)';
-                
-                setTimeout(() => {
-                    item.style.opacity = '1';
-                    item.style.transform = 'translateY(0)';
-                    item.style.transition = 'all 0.5s ease-out';
-                }, 800 + index * 100);
-            });
-        });
-    </script>
 
     <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1382,5 +1023,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 </script>
-  </body>
+</body>
 </html>
