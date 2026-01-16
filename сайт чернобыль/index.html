@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №1</title>
+  
+    <meta property="og:title" content="Заголовок страницы в OG">
+    <meta property="og:description" content="Описание страницы в OG">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+<link rel="icon" href="rad.png.png" type="image/png">
+
+    <style>
+        body {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+             3px 4px 4px rgba(33, 25, 2, 0.411),
+             4px 6px 4px rgba(33, 25, 2, 0.411),
+             5px 8px 4px rgba(33, 25, 2, 0.411);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #f0f0f0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #8B8000 0%, #000000 50%, #5D4037 100%);
+            animation: gradientShift 10s ease infinite alternate;
+            background-size: 200% 200%;
+            padding: 20px;
+            margin: 0;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, 
+#01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, 
+#01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            50% {
+                background-position: 100% 50%;
+                background: linear-gradient(135deg, 
+#01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, 
+#01fc0a 0%, #0A0A0A 50%, #056216 100%);
+            }
+            100% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, 
+#01fc0a 0%, #000000 50%, #056216 100%);
+            }
+        }
+
+        header {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+             3px 4px 4px rgba(33, 25, 2, 0.411),
+             4px 6px 4px rgba(33, 25, 2, 0.411),
+             5px 8px 4px rgba(33, 25, 2, 0.411);
+            background: rgba(30, 30, 30, 0.9);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #01fc0a;
+        }
+
+        h1 {
+            font-family: 'Arial Black';
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #00d406, #01fc0a);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+                         3px 4px 4px rgba(33, 25, 2, 0.411),
+                         4px 6px 4px rgba(33, 25, 2, 0.411),
+                         5px 8px 4px rgba(33, 25, 2, 0.411);
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-family: 'Arial Black';
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #00d406, #01fc0a);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+                         3px 4px 4px rgba(33, 25, 2, 0.411),
+                         4px 6px 4px rgba(33, 25, 2, 0.411),
+                         5px 8px 4px rgba(33, 25, 2, 0.411);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn-slide {
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 180px;
+            line-height: 50px;
+            padding: 0;
+            border-radius: 50px;
+            background: rgba(1, 252, 10, 0.1);
+            border: 2px solid #01fc0a;
+            margin: 10px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-slide:hover {
+            background: rgba(1, 252, 10, 0.2);
+            width: 200px;
+        }
+
+        .btn-slide:hover .circle {
+            left: calc(100% - 52px);
+        }
+
+        .btn-slide:hover .title {
+            left: 60px;
+        }
+
+        .btn-slide:hover .title-hover {
+            left: 60px;
+            opacity: 1;
+        }
+
+        .btn-slide .circle {
+            display: block;
+            background-color: #01fc0a;
+            color: #000;
+            position: absolute;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .btn-slide .circle i {
+            font-size: 20px;
+            line-height: 50px;
+            transition: all 0.4s ease;
+            transform: scale(1);
+        }
+
+        .btn-slide:hover .circle i {
+            transform: scale(1.1);
+        }
+
+        .btn-slide .title,
+        .btn-slide .title-hover {
+            position: absolute;
+            left: 80px;
+            margin: 0;
+            text-align: center;
+            margin: 0;
+            color: #01fc0a;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            z-index: 1;
+            width: 100px;
+        }
+
+        .btn-slide .title-hover {
+            left: 150px;
+            opacity: 0;
+            color: #00d406;
+        }
+
+        .btn-slide .title {
+            opacity: 1;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            background: rgba(40, 40, 40, 0.8);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 2px solid #01fc0a;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+             3px 4px 4px rgba(33, 25, 2, 0.411),
+             4px 6px 4px rgba(33, 25, 2, 0.411),
+             5px 8px 4px rgba(33, 25, 2, 0.411);
+            color: #01fc0a;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #01fc0a;
+            padding-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .section-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-content {
+            padding: 20px;
+        }
+
+        p {
+            color: #E0E0E0;
+            margin: 15px 0;
+            font-size: 1.1em;
+            line-height: 1.7;
+            background: rgba(1, 252, 10, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        p:hover {
+            background: rgba(1, 252, 10, 0.1);
+            transform: translateX(5px);
+        }
+
+        img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid #01fc0a;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02);
+        }
+
+        .highlight {
+            color: #01fc0a;
+            font-weight: 600;
+            background: rgba(1, 252, 10, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 25px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-top: 3px solid #01fc0a;
+            border: 2px solid #01fc0a;
+        }
+
+        footer p {
+            color: #01fc0a;
+            margin-bottom: 10px;
+            background: none;
+            border-left: none;
+            padding: 0;
+            transition: none;
+            transform: none;
+        }
+
+        footer p:hover {
+            background: none;
+            transform: none;
+        }
+
+        footer a {
+            color: #00d406;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #01fc0a;
+            text-decoration: underline;
+        }
+        
+        .registration-form { display: flex; flex-direction: column; gap: 20px; margin: 20px 0; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { color: #01fc0a; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+        .form-group input, .form-group select { padding: 12px 15px; border-radius: 10px; border: 2px solid #01fc0a; background: rgba(30, 30, 30, 0.9); color: #fff; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #01fc0a; box-shadow: 0 0 15px rgba(1, 252, 10, 0.3); }
+        .submit-btn { background: linear-gradient(135deg, #006603, #01fc0a); color: #000; border: none; padding: 18px 30px; border-radius: 50px; font-size: 18px; font-weight: 600; cursor: pointer; }
+        .submit-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 25px rgba(1, 252, 10, 0.4); }
+        .message { margin-top: 25px; padding: 20px; border-radius: 10px; text-align: center; font-weight: 600; }
+        .success { background: rgba(0, 255, 0, 0.1); color: #00ff00; border: 2px solid #00ff00; }
+        .error { background: rgba(255, 0, 0, 0.1); color: #ff5555; border: 2px solid #ff5555; }
+        .benefits-list { list-style: none; padding: 0; }
+        .benefits-list li { color: #E0E0E0; margin: 12px 0; padding: 12px; background: rgba(1, 252, 10, 0.05); border-radius: 8px; border-left: 3px solid #01fc0a; }
+        
+        
+        .calculator {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #01fc0a;
+            margin: 20px 0;
+        }
+        
+        .calculator h3 {
+            color: #01fc0a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .calc-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        @media (max-width: 768px) {
+            .calc-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .calc-group label {
+            color: #01fc0a;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .calc-group select, 
+        .calc-group input {
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 2px solid #01fc0a;
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .calc-result {
+            background: rgba(1, 252, 10, 0.1);
+            border: 2px solid #01fc0a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .calc-total {
+            font-size: 28px;
+            font-weight: bold;
+            color: #01fc0a;
+            margin: 15px 0;
+        }
+        
+        .calc-details {
+            margin-top: 15px;
+            text-align: left;
+            color: #E0E0E0;
+            font-size: 14px;
+        }
+        
+        .calc-btn {
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .calc-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(1, 252, 10, 0.4);
+        }
+        
+        .safety-item {
+            margin: 12px 0;
+            padding: 12px;
+            background: rgba(1, 252, 10, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+        
+        .safety-item:hover {
+            background: rgba(1, 252, 10, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .read-more-section {
+            background: rgba(1, 252, 10, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid #01fc0a;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            border: 2px solid #01fc0a;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(1, 252, 10, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(1, 252, 10, 0.5);
+            background: linear-gradient(135deg, #01fc0a, #00d406);
+        }
+
+        .back-to-top.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Сайт студента группы ПИ25А Дубовик Веры Александровны</h1>
+      <p>Экскурсии в Чернобыльскую Зону Отчуждения</p>
+      
+      <nav>
+        <a class="btn-slide" href="index.html">
+          <span class="circle">
+            <i class="fas fa-home"></i>
+          </span>
+          <span class="title">Главная</span>
+        </a>
+        
+        <a class="btn-slide" href="about.html">
+          <span class="circle">
+            <i class="fas fa-bus"></i>
+          </span>
+          <span class="title">О поездках</span>
+        </a>
+        
+        <a class="btn-slide" href="contacts.html">
+          <span class="circle">
+            <i class="fas fa-phone"></i>
+          </span>
+          <span class="title">Контакты</span>
+        </a>
+
+           <a class="btn-slide" href="static.html">
+          <span class="circle">
+            <i class="fas fa-chart-line"></i>
+          </span>
+          <span class="title">Статистика</span>
+        </a>
+
+             <a class="btn-slide" href="history.html">
+          <span class="circle">
+            <i class="fas fa-history"></i>
+          </span>
+          <span class="title">История</span>
+        </a>
+      </nav>
+    </header>
+    
+    <main>
+<div class="content-section">
+    <h2><i class="fas fa-user-plus"></i> Регистрация на экскурсию</h2>
+    <div class="section-content">
+        <div class="text-content">
+            <p><span class="highlight">Забронируйте место на экскурсию прямо сейчас!</span></p>
+            
+            <form id="registrationForm" class="registration-form">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> ФИО:</label>
+                    <input type="text" id="name" name="name" required 
+                           placeholder="Введите ваше полное имя">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="email" name="email" required 
+                           placeholder="example@mail.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone"><i class="fas fa-phone"></i> Телефон:</label>
+                    <input type="tel" id="phone" name="phone" required 
+                           placeholder="+7 (XXX) XXX-XX-XX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Пароль:</label>
+                    <input type="password" id="password" name="password" required 
+                           placeholder="Создайте надежный пароль">
+                </div>
+                
+                <div class="form-group">
+                    <label for="tour_type"><i class="fas fa-calendar"></i> Выберите тур:</label>
+                    <select id="tour_type" name="tour_type">
+                        <option value="однодневный">Классический однодневный тур (от 100$)</option>
+                        <option value="двухдневный">Программа глубокого погружения (2 дня, от 250$)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="participants"><i class="fas fa-users"></i> Количество человек:</label>
+                    <input type="number" id="participants" name="participants" 
+                           min="1" max="20" value="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferred_date"><i class="fas fa-calendar-alt"></i> Предпочтительная дата:</label>
+                    <input type="date" id="preferred_date" name="preferred_date">
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> Зарегистрироваться на экскурсию
+                </button>
+            </form>
+            
+            <div id="message" class="message"></div>
+            
+            <div class="login-section">
+                <p>Уже зарегистрированы? <a href="#" id="showLogin">Войдите в аккаунт</a></p>
+            </div>
+        </div>
+        
+        <div class="benefits">
+            <h3><i class="fas fa-gift"></i> Что дает регистрация?</h3>
+            <ul class="benefits-list">
+                <li><i class="fas fa-check-circle"></i> Бронирование места в группе</li>
+                <li><i class="fas fa-star"></i> Специальные условия для участников</li>
+                <li><i class="fas fa-bell"></i> Уведомление о новых турах</li>
+                <li><i class="fas fa-lock"></i> Доступ к эксклюзивным материалам</li>
+                <li><i class="fas fa-headset"></i> Поддержка 24/7</li>
+            </ul>
+            
+            <div class="calculator">
+                <h3><i class="fas fa-calculator"></i> Калькулятор стоимости тура</h3>
+                
+                <div class="calc-controls">
+                    <div class="calc-group">
+                        <label for="calcTourType"><i class="fas fa-map-marked-alt"></i> Тип тура:</label>
+                        <select id="calcTourType">
+                            <option value="100">Однодневный тур - 100$</option>
+                            <option value="200">Двухдневный тур - 200$</option>
+                            <option value="300">Трехдневный тур - 300$</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-group">
+                        <label for="calcPeopleCount"><i class="fas fa-users"></i> Количество человек:</label>
+                        <input type="number" id="calcPeopleCount" min="1" value="1">
+                    </div>
+                    
+                    <div class="calc-group">
+                        <label for="calcDiscount"><i class="fas fa-percentage"></i> Скидка:</label>
+                        <select id="calcDiscount">
+                            <option value="0">Нет</option>
+                            <option value="5">5% (группа 5+ чел)</option>
+                            <option value="10">10% (группа 10+ чел)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="calc-group">
+                        <label><i class="fas fa-info-circle"></i> Расчет:</label>
+                        <button type="button" class="calc-btn" onclick="calculateTourCost()">
+                            <i class="fas fa-calculator"></i> Рассчитать стоимость
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="calc-result" id="calcResult">
+                    <h4><i class="fas fa-file-invoice-dollar"></i> Итого к оплате:</h4>
+                    <div class="calc-total" id="totalCost">100.00$</div>
+                    
+                    <div class="calc-details" id="breakdown">
+                        <p><i class="fas fa-tag"></i> Стоимость тура: 100$</p>
+                        <p><i class="fas fa-user-friends"></i> Количество человек: 1</p>
+                        <p><i class="fas fa-percentage"></i> Скидка: 0%</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-support">
+                <h4><i class="fas fa-headset"></i> Нужна помощь?</h4>
+                <p>Звоните: <strong>+7 (XXX) XXX-XX-XX</strong></p>
+                <p>Пишите: <strong>chernobyl-tours@example.com</strong></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content-section" id="loginFormSection" style="display: none;">
+    <h2><i class="fas fa-sign-in-alt"></i> Вход в аккаунт</h2>
+    <div class="section-content">
+        <div class="text-content">
+            <form id="loginForm" class="registration-form">
+                <div class="form-group">
+                    <label for="loginEmail"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="loginEmail" name="email" required 
+                           placeholder="Ваш email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword"><i class="fas fa-lock"></i> Пароль:</label>
+                    <input type="password" id="loginPassword" name="password" required 
+                           placeholder="Ваш пароль">
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-sign-in-alt"></i> Войти
+                </button>
+            </form>
+            
+            <div id="loginMessage" class="message"></div>
+            
+            <p>Нет аккаунта? <a href="#" id="showRegister">Зарегистрируйтесь</a></p>
+        </div>
+        
+        <div class="login-info">
+            <h3><i class="fas fa-shield-alt"></i> Безопасность данных</h3>
+            <p>Все ваши данные защищены и используются только для организации экскурсий.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+function calculateTourCost() {
+    const tourPrice = parseFloat(document.getElementById('calcTourType').value);
+    const people = parseInt(document.getElementById('calcPeopleCount').value);
+    const discount = parseFloat(document.getElementById('calcDiscount').value);
+
+    let total = tourPrice * people;
+    let finalDiscount = 0;
+
+    if (discount > 0) {
+        finalDiscount = discount;
+        total = total * (1 - discount / 100);
+    }
+
+    document.getElementById('totalCost').textContent = total.toFixed(2) + '$';
+
+    document.getElementById('breakdown').innerHTML = `
+        <p><i class="fas fa-tag"></i> Стоимость тура: ${tourPrice}$</p>
+        <p><i class="fas fa-user-friends"></i> Количество человек: ${people}</p>
+        <p><i class="fas fa-percentage"></i> Скидка: ${finalDiscount}%</p>
+    `;
+    
+    const resultElement = document.getElementById('calcResult');
+    resultElement.style.transform = 'scale(1.05)';
+    setTimeout(() => {
+        resultElement.style.transform = 'scale(1)';
+        resultElement.style.transition = 'transform 0.3s ease';
+    }, 300);
+}
+</script>
+
+<script>
+    const registrationForm = document.getElementById('registrationForm');
+    const loginForm = document.getElementById('loginForm');
+    const messageDiv = document.getElementById('message');
+    const loginMessageDiv = document.getElementById('loginMessage');
+    const showLoginLink = document.getElementById('showLogin');
+    const showRegisterLink = document.getElementById('showRegister');
+    const loginFormSection = document.getElementById('loginFormSection');
+
+    if (registrationForm) {
+        registrationForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            try {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Регистрация...';
+                submitBtn.disabled = true;
+                
+                const response = await fetch('http://localhost:8000/api/register', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    messageDiv.textContent = ` ${data.message}`;
+                    messageDiv.className = 'message success';
+                    registrationForm.reset();
+                    
+                    document.getElementById('loginEmail').value = formData.get('email');
+                    document.getElementById('loginPassword').value = formData.get('password');
+                    
+                    setTimeout(() => {
+                        showLoginForm();
+                    }, 3000);
+                } else {
+                    messageDiv.textContent = ` ${data.detail}`;
+                    messageDiv.className = 'message error';
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                messageDiv.textContent = ' Ошибка подключения к серверу. Проверьте, запущен ли сервер FastAPI.';
+                messageDiv.className = 'message error';
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            try {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Вход...';
+                submitBtn.disabled = true;
+                
+                const response = await fetch('http://localhost:8000/api/login', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    loginMessageDiv.textContent = ` ${data.message} Добро пожаловать, ${data.name}!`;
+                    loginMessageDiv.className = 'message success';
+                    localStorage.setItem('user', JSON.stringify(data));
+                    
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 2000);
+                } else {
+                    loginMessageDiv.textContent = ` ${data.detail}`;
+                    loginMessageDiv.className = 'message error';
+                }
+            } catch (error) {
+                loginMessageDiv.textContent = ' Ошибка подключения к серверу';
+                loginMessageDiv.className = 'message error';
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    if (showLoginLink) {
+        showLoginLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            showLoginForm();
+        });
+    }
+
+    if (showRegisterLink) {
+        showRegisterLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginFormSection.style.display = 'none';
+            const registrationSection = document.querySelector('.content-section:nth-last-child(2)');
+            if (registrationSection) {
+                registrationSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+
+    function showLoginForm() {
+        loginFormSection.style.display = 'block';
+        loginFormSection.scrollIntoView({ behavior: 'smooth' });
+        loginFormSection.style.opacity = '0';
+        loginFormSection.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            loginFormSection.style.opacity = '1';
+            loginFormSection.style.transform = 'translateY(0)';
+            loginFormSection.style.transition = 'all 0.6s ease-out';
+        }, 100);
+    }
+
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+        const user = JSON.parse(savedUser);
+        console.log('Авторизованный пользователь:', user.name);
+    }
+</script>
+      <div class="content-section">
+        <h2><i class="fas fa-door-open"></i> Добро пожаловать</h2>
+        <div class="section-content">
+          <div class="text-content">
+            <p><span class="highlight">Зона отчуждения. Поездка во времени.</span></p>
+            <p>Добро пожаловать в пространство, где остановилось время. Чернобыль — это не просто точка на карте, а многогранная история: памятник человеческой смелости и хрупкости, урок всему миру и невероятный пример возрождения природы. Мы проводим экскурсии, которые разрушают стереотипы и помогают увидеть за заброшенными фасадами судьбы людей, масштаб подвига и тихий голос Полесья, которое продолжает жить. Это путешествие для думающих.</p>
+          </div>
+          <img width="350" src="https://masterpiecer-images.s3.yandex.net/17978d2577b411eea7923a7ca4cc1bdc:upscaled" alt="Чернобыльская зона">
+        </div>
+      </div>
+      
+      <div class="content-section">
+        <h2><i class="fas fa-map-marked-alt"></i> Что Вас ждет?</h2>
+        <div class="section-content">
+          <img width="350" src="https://avatars.mds.yandex.net/get-shedevrum/16311338/img_99da3b23221211f098e6228f8b751de6/orig" alt="Маршрут экскурсии">
+          <div class="text-content">
+            <p><span class="highlight">Маршрут памяти и осознания</span></p>
+            <p><i class="fas fa-ghost"></i> <span class="highlight">Припять-город-призрак:</span> Пройдемся по пустым проспектам и этажам, где когда-то кипела жизнь самого молодого города СССР. Школа, бассейн, парк аттракционов — здесь каждый объект говорит без слов.</p>
+            
+            <p><i class="fas fa-industry"></i> <span class="highlight">ЧАЭС и новый безопасный конфайнмент:</span> Увидим легендарную станцию с безопасного расстояния и грандиозный «Укрытие», символ преодоления последствий аварии.</p>
+            
+            <p><i class="fas fa-user-secret"></i> <span class="highlight">Тайны Зоны:</span> Посетим заброшенные объекты, например, загоризонтную РЛС «Дуга» («русский дятел») или секретный город Чернобыль-2.</p>
+            
+            <p><i class="fas fa-leaf"></i> <span class="highlight">Возрождение природы:</span> Убедимся, как дикая флора и фауна, не скованная присутствием человека, превратила Зону в уникальный заповедник.</p>
+            
+            <p><i class="fas fa-users"></i> <span class="highlight">Встреча с самосёлами:</span> По возможности навестим тех, кто, вопреки всему, вернулся в свои дома. Живая история в лицах.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="content-section">
+        <h2><i class="fas fa-exclamation-triangle"></i> Предупреждение</h2>
+        <div class="section-content">
+             <img width="350" src="https://cdn-icons-png.flaticon.com/512/2878/2878126.png">
+          <div class="text-content">
+            <p><span class="highlight">Это не развлечение. Это осознанный опыт.</span></p>
+            <p>Экскурсия в Чернобыльскую зону отчуждения — не туристический аттракцион. Это глубокое и порой эмоционально сложное погружение в историю.</p>
+            
+            <div class="safety-item">
+              <p><i class="fas fa-shield-alt"></i> <span class="highlight">Безопасность — прежде всего:</span> Все маршруты согласованы, уровни радиации контролируются дозиметрами. Строго соблюдайте все инструкции гида: не садитесь на землю, не прикасайтесь к постройкам и предметам, не заходите в неразрешенные зоны.</p>
+            </div>
+            
+            <div class="safety-item">
+              <p><i class="fas fa-hands-helping"></i> <span class="highlight">Этика посещения:</span> Мы в гостях у памяти. Относитесь к местам и возможным встречам с уважением. Любые проявления вандализма, неуважения или попытки взять «сувенир» недопустимы.</p>
+            </div>
+            
+            <div class="safety-item">
+              <p><i class="fas fa-heartbeat"></i> <span class="highlight">Здоровье и доступность:</span> Поездка предполагает длительные пешие переходы, подъем по лестницам. Не рекомендуется беременным, лицам до 18 лет и людям с серьезными хроническими заболеваниями.</p>
+            </div>
+            
+            <div class="safety-item">
+              <p><i class="fas fa-file-signature"></i> <span class="highlight">Ваша ответственность:</span> Вы самостоятельно оцениваете свои физические и моральные силы для этого путешествия. Вы обязаны подписать правила поведения в Зоне.</p>
+            </div>
+            
+            <p><span class="highlight">Готовы ли вы увидеть историю своими глазами?</span></p>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+    <div class="back-to-top" id="backToTop">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <footer>
+      <p>Почитать о Чернобыле <i class="fas fa-arrow-down"></i></p>
+      <p>
+        <a href="https://ru.wikipedia.org/wiki/Чернобыль">https://ru.wikipedia.org/wiki/Чернобыль</a>
+      </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница загружена');
+            
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease-out';
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 300 + index * 200);
+            });
+
+            const buttons = document.querySelectorAll('.btn-slide');
+            buttons.forEach((button, index) => {
+                button.style.opacity = '0';
+                button.style.transform = 'translateY(10px)';
+                
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                    button.style.transform = 'translateY(0)';
+                    button.style.transition = 'all 0.5s ease-out';
+                }, 500 + index * 100);
+            });
+
+            const paragraphs = document.querySelectorAll('.text-content p');
+            paragraphs.forEach((p, index) => {
+                p.style.opacity = '0';
+                p.style.transform = 'translateX(-20px)';
+                
+                setTimeout(() => {
+                    p.style.opacity = '1';
+                    p.style.transform = 'translateX(0)';
+                    p.style.transition = 'all 0.5s ease-out';
+                }, 700 + index * 50);
+            });
+            
+            const safetyItems = document.querySelectorAll('.safety-item');
+            safetyItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                    item.style.transition = 'all 0.5s ease-out';
+                }, 800 + index * 100);
+            });
+        });
+    </script>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const clickableElements = document.querySelectorAll(
+        'a, button, .btn-slide, .submit-btn, .calc-btn, .array-button, .help-button, .wiki-link'
+    );
+    
+    const hoverElements = document.querySelectorAll(
+        '.content-section, .stat-item, .timer-item, p, .benefits-list li, .safety-item, .tour-item, .info-list li'
+    );
+
+    document.addEventListener('pointerdown', function(e) {
+        if (e.target.closest('a, button, .btn-slide, .submit-btn')) {
+            e.target.style.transform = 'scale(0.98)';
+            e.target.style.transition = 'transform 0.1s ease';
+        }
+    });
+
+    document.addEventListener('pointerup', function(e) {
+        if (e.target.closest('a, button, .btn-slide, .submit-btn')) {
+            e.target.style.transform = 'scale(1)';
+        }
+    });
+
+    clickableElements.forEach(element => {
+        element.addEventListener('pointerover', function(e) {
+            this.style.cursor = 'pointer';
+            if (!this.classList.contains('btn-slide')) {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 5px 15px rgba(1, 252, 10, 0.3)';
+                this.style.transition = 'all 0.3s ease';
+            }
+        });
+
+        element.addEventListener('pointerout', function(e) {
+            if (!this.classList.contains('btn-slide')) {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            }
+        });
+
+        element.addEventListener('pointerenter', function(e) {
+            if (!this.style.cursor) {
+                this.style.cursor = 'pointer';
+            }
+        });
+
+        element.addEventListener('pointerleave', function(e) {
+            this.style.transform = 'scale(1)';
+        });
+
+        element.addEventListener('pointermove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (this.classList.contains('content-section') || 
+                this.classList.contains('stat-item') || 
+                this.classList.contains('timer-item')) {
+                const glowX = (x / rect.width) * 100;
+                const glowY = (y / rect.height) * 100;
+                this.style.background = `
+                    radial-gradient(circle at ${glowX}% ${glowY}%, 
+                    rgba(1, 252, 10, 0.1) 0%, 
+                    rgba(40, 40, 40, 0.8) 70%
+                )`;
+            }
+        });
+    });
+
+    hoverElements.forEach(element => {
+        element.addEventListener('pointerenter', function(e) {
+            if (!this.classList.contains('content-section')) {
+                this.style.backgroundColor = 'rgba(1, 252, 10, 0.08)';
+            }
+        });
+
+        element.addEventListener('pointerleave', function(e) {
+            if (!this.classList.contains('content-section')) {
+                this.style.backgroundColor = '';
+            }
+        });
+    });
+
+    const tables = document.querySelectorAll('.history-table tr');
+    tables.forEach(row => {
+        row.addEventListener('pointerenter', function(e) {
+            this.style.backgroundColor = 'rgba(1, 252, 10, 0.15)';
+        });
+
+        row.addEventListener('pointerleave', function(e) {
+            const isEven = this.rowIndex % 2 === 0;
+            this.style.backgroundColor = isEven ? 
+                'rgba(40, 40, 40, 0.9)' : 
+                'rgba(30, 30, 30, 0.9)';
+        });
+    });
+
+    document.addEventListener('pointermove', function(e) {
+        if (e.pointerType === 'mouse') {
+            document.body.style.cursor = 'default';
+        }
+    });
+
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('pointerenter', function(e) {
+            this.style.transform = 'scale(1.05) rotate(1deg)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+
+        img.addEventListener('pointerleave', function(e) {
+            this.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
+    
+    const buttons = document.querySelectorAll('.calc-btn, .array-button, .submit-btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('pointerdown', function(e) {
+            if (e.button === 0) {
+                this.style.background = 'linear-gradient(135deg, #004d00, #00a800)';
+            }
+        });
+        
+        btn.addEventListener('pointerup', function(e) {
+            if (e.button === 0) {
+                this.style.background = 'linear-gradient(135deg, #006603, #01fc0a)';
+            }
+        });
+    });
+
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('pointerdown', function(e) {
+            this.style.color = '#00ff00';
+        });
+        
+        link.addEventListener('pointerup', function(e) {
+            this.style.color = '#00d406';
+        });
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    backToTopBtn.addEventListener('pointerdown', function(e) {
+        this.style.transform = 'scale(0.9)';
+    });
+
+    backToTopBtn.addEventListener('pointerup', function(e) {
+        this.style.transform = 'scale(1)';
+    });
+
+    backToTopBtn.addEventListener('pointerover', function(e) {
+        this.style.cursor = 'pointer';
+    });
+
+    backToTopBtn.addEventListener('pointerenter', function(e) {
+        this.style.boxShadow = '0 0 20px rgba(1, 252, 10, 0.7)';
+    });
+
+    backToTopBtn.addEventListener('pointerleave', function(e) {
+        this.style.boxShadow = '0 4px 15px rgba(1, 252, 10, 0.3)';
+    });
+});
+</script>
+  </body>
+</html>

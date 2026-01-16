@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+   <link rel="icon" href="rad.png.png" type="image/png">
+
+    <style>
+        * {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+            3px 4px 4px rgba(33, 25, 2, 0.411),
+            4px 6px 4px rgba(33, 25, 2, 0.411),
+            5px 8px 4px rgba(33, 25, 2, 0.411);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+            3px 4px 4px rgba(33, 25, 2, 0.411),
+            4px 6px 4px rgba(33, 25, 2, 0.411),
+            5px 8px 4px rgba(33, 25, 2, 0.411);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            position: relative;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('koleco.jpg') no-repeat center center fixed;
+            background-size: cover;
+            animation: backgroundShift 20s ease infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                            url('koleco.jpg') no-repeat center center fixed;
+                background-size: cover;
+                background-position: 0% 50%;
+            }
+            50% {
+                background: linear-gradient(rgba(0, 30, 0, 0.7), rgba(0, 20, 0, 0.7)),
+                            url('koleco.jpg') no-repeat center center fixed;
+                background-size: 110% 110%;
+                background-position: 50% 50%;
+            }
+            100% {
+                background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                            url('koleco.jpg') no-repeat center center fixed;
+                background-size: cover;
+                background-position: 100% 50%;
+            }
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 20, 0, 0.4);
+            z-index: -1;
+        }
+        
+        header {
+            background: rgba(10, 20, 10, 0.85);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid #01fc0a;
+        }
+        
+        h1 {
+            font-family: 'Arial Black';
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #00d406, #01fc0a);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+                         3px 4px 4px rgba(33, 25, 2, 0.411),
+                         4px 6px 4px rgba(33, 25, 2, 0.411),
+                         5px 8px 4px rgba(33, 25, 2, 0.411);
+            margin-bottom: 15px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn-slide {
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 180px;
+            line-height: 50px;
+            padding: 0;
+            border-radius: 50px;
+            background: rgba(1, 252, 10, 0.1);
+            border: 2px solid #01fc0a;
+            margin: 10px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-slide:hover {
+            background: rgba(1, 252, 10, 0.2);
+            width: 200px;
+        }
+
+        .btn-slide:hover .circle {
+            left: calc(100% - 52px);
+        }
+
+        .btn-slide:hover .title {
+            left: 60px;
+        }
+
+        .btn-slide:hover .title-hover {
+            left: 60px;
+            opacity: 1;
+        }
+
+        .btn-slide .circle {
+            display: block;
+            background-color: #01fc0a;
+            color: #000;
+            position: absolute;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .btn-slide .circle i {
+            font-size: 20px;
+            line-height: 50px;
+            transition: all 0.4s ease;
+            transform: scale(1);
+        }
+
+        .btn-slide:hover .circle i {
+            transform: scale(1.1);
+        }
+
+        .btn-slide .title,
+        .btn-slide .title-hover {
+            position: absolute;
+            left: 80px;
+            margin: 0;
+            text-align: center;
+            margin: 0;
+            color: #01fc0a;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            z-index: 1;
+            width: 100px;
+        }
+
+        .btn-slide .title-hover {
+            left: 150px;
+            opacity: 0;
+            color: #00d406;
+        }
+
+        .btn-slide .title {
+            opacity: 1;
+        }
+        
+        .btn-slide:hover {
+            background: rgba(1, 252, 10, 0.9);
+            color: #000;
+            transform: translateY(-3px);
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(20, 30, 20, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            border: 2px solid #01fc0a;
+        }
+        
+        h2 {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+            3px 4px 4px rgba(33, 25, 2, 0.411),
+            4px 6px 4px rgba(33, 25, 2, 0.411),
+            5px 8px 4px rgba(33, 25, 2, 0.411);
+            color: #01fc0a;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+            border-bottom: 2px solid #01fc0a;
+            padding-bottom: 10px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(30, 40, 30, 0.8);
+            border-radius: 10px;
+            border-left: 4px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(1, 252, 10, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 24px;
+            color: #01fc0a;
+            width: 40px;
+        }
+        
+        .contact-item p {
+            font-size: 1.2em;
+            color: #fff;
+        }
+
+        .highlight {
+            color: #01fc0a;
+            font-weight: 600;
+            background: rgba(1, 252, 10, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        footer {
+            margin-top: 50px;
+            background: rgba(10, 20, 10, 0.9);
+            color: #01fc0a;
+            text-align: center;
+            padding: 25px;
+            backdrop-filter: blur(5px);
+            border-top: 3px solid #01fc0a;
+            border: 2px solid #01fc0a;
+        }
+        
+        footer a {
+            color: #00d406;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        footer a:hover {
+            color: #01fc0a;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                margin: 20px;
+                padding: 20px;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            border: 2px solid #01fc0a;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(1, 252, 10, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(1, 252, 10, 0.5);
+            background: linear-gradient(135deg, #01fc0a, #00d406);
+        }
+
+        .back-to-top.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <header>
+        <h1>Сайт студента группы ПИ25А Дубовик Веры Александровны</h1>
+        <p>Экскурсии в Чернобыльскую Зону Отчуждения</p>
+        
+        <nav>
+            <a class="btn-slide" href="index.html">
+                <span class="circle">
+                    <i class="fas fa-home"></i>
+                </span>
+                <span class="title">Главная</span>
+            </a>
+            
+            <a class="btn-slide" href="about.html">
+                <span class="circle">
+                    <i class="fas fa-bus"></i>
+                </span>
+                <span class="title">О поездках</span>
+            </a>
+            
+            <a class="btn-slide" href="contacts.html">
+                <span class="circle">
+                    <i class="fas fa-phone"></i>
+                </span>
+                <span class="title">Контакты</span>
+            </a>
+
+                <a class="btn-slide" href="static.html">
+          <span class="circle">
+                  <i class="fas fa-chart-line"></i>
+          </span>
+          <span class="title">Статистика</span>
+        </a>
+
+        
+             <a class="btn-slide" href="history.html">
+          <span class="circle">
+            <i class="fas fa-history"></i>
+          </span>
+          <span class="title">История</span>
+        </a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2><i class="fas fa-phone-volume"></i> Свяжитесь с нами</h2>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <p><span class="highlight">Телефон:</span> +7 (XXX) XXX-XX-XX</p>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <p><span class="highlight">Email:</span> chernobyl-tours@example.com</p>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><span class="highlight">Адрес:</span> г. Донецк, ул. 50-летия СССР, д. 1</p>
+            </div>
+            
+            <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <p><span class="highlight">Время работы:</span> Пн-Пт с 9:00 до 18:00</p>
+            </div>
+        </div>
+        
+    </main>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <footer>
+        <p>Почитать о Чернобыле <i class="fas fa-arrow-down"></i></p>
+        <p><a href="https://ru.wikipedia.org/wiki/Чернобыль">https://ru.wikipedia.org/wiki/Чернобыль</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница "Контакты" загружена');
+            
+            const contactItems = document.querySelectorAll('.contact-item');
+            contactItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-30px)';
+                item.style.transition = 'all 0.6s ease-out';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                }, 300 + index * 150);
+            });
+
+            const buttons = document.querySelectorAll('.btn-slide');
+            buttons.forEach((button, index) => {
+                button.style.opacity = '0';
+                button.style.transform = 'translateY(10px)';
+                
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                    button.style.transform = 'translateY(0)';
+                    button.style.transition = 'all 0.5s ease-out';
+                }, 500 + index * 100);
+            });
+        });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const clickableElements = document.querySelectorAll(
+            'a, button, .btn-slide, .submit-btn, .calc-btn, .array-button, .help-button, .wiki-link'
+        );
+        
+        const hoverElements = document.querySelectorAll(
+            '.contact-item, p, main, .highlight'
+        );
+
+        document.addEventListener('pointerdown', function(e) {
+            if (e.target.closest('a, button, .btn-slide, .submit-btn')) {
+                e.target.style.transform = 'scale(0.98)';
+                e.target.style.transition = 'transform 0.1s ease';
+            }
+        });
+
+        document.addEventListener('pointerup', function(e) {
+            if (e.target.closest('a, button, .btn-slide, .submit-btn')) {
+                e.target.style.transform = 'scale(1)';
+            }
+        });
+
+        clickableElements.forEach(element => {
+            element.addEventListener('pointerover', function(e) {
+                this.style.cursor = 'pointer';
+                if (!this.classList.contains('btn-slide')) {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 5px 15px rgba(1, 252, 10, 0.3)';
+                    this.style.transition = 'all 0.3s ease';
+                }
+            });
+
+            element.addEventListener('pointerout', function(e) {
+                if (!this.classList.contains('btn-slide')) {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+
+            element.addEventListener('pointerenter', function(e) {
+                if (!this.style.cursor) {
+                    this.style.cursor = 'pointer';
+                }
+            });
+
+            element.addEventListener('pointerleave', function(e) {
+                this.style.transform = 'scale(1)';
+            });
+
+            element.addEventListener('pointermove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (this.classList.contains('contact-item') || 
+                    this.classList.contains('main')) {
+                    const glowX = (x / rect.width) * 100;
+                    const glowY = (y / rect.height) * 100;
+                    this.style.background = `
+                        radial-gradient(circle at ${glowX}% ${glowY}%, 
+                        rgba(1, 252, 10, 0.1) 0%, 
+                        rgba(30, 40, 30, 0.8) 70%
+                    )`;
+                }
+            });
+        });
+
+        hoverElements.forEach(element => {
+            element.addEventListener('pointerenter', function(e) {
+                if (!this.classList.contains('contact-item') && 
+                    !this.classList.contains('main')) {
+                    this.style.backgroundColor = 'rgba(1, 252, 10, 0.08)';
+                }
+            });
+
+            element.addEventListener('pointerleave', function(e) {
+                if (!this.classList.contains('contact-item') && 
+                    !this.classList.contains('main')) {
+                    this.style.backgroundColor = '';
+                }
+            });
+        });
+
+        document.addEventListener('pointermove', function(e) {
+            if (e.pointerType === 'mouse') {
+                document.body.style.cursor = 'default';
+            }
+        });
+
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('pointerdown', function(e) {
+                this.style.color = '#00ff00';
+                this.style.textShadow = '0 0 10px rgba(0, 255, 0, 0.7)';
+            });
+            
+            link.addEventListener('pointerup', function(e) {
+                this.style.color = '#00d406';
+                this.style.textShadow = '2px 2px 4px rgba(33, 25, 2, 0.411)';
+            });
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        backToTopBtn.addEventListener('pointerdown', function(e) {
+            this.style.transform = 'scale(0.9)';
+        });
+
+        backToTopBtn.addEventListener('pointerup', function(e) {
+            this.style.transform = 'scale(1)';
+        });
+
+        backToTopBtn.addEventListener('pointerover', function(e) {
+            this.style.cursor = 'pointer';
+        });
+
+        backToTopBtn.addEventListener('pointerenter', function(e) {
+            this.style.boxShadow = '0 0 20px rgba(1, 252, 10, 0.7)';
+        });
+
+        backToTopBtn.addEventListener('pointerleave', function(e) {
+            this.style.boxShadow = '0 4px 15px rgba(1, 252, 10, 0.3)';
+        });
+
+        const contactItems = document.querySelectorAll('.contact-item');
+        contactItems.forEach(item => {
+            item.addEventListener('pointerenter', function(e) {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    icon.style.color = '#00ff00';
+                    icon.style.transition = 'all 0.3s ease';
+                }
+                
+                const highlight = this.querySelector('.highlight');
+                if (highlight) {
+                    highlight.style.backgroundColor = 'rgba(1, 252, 10, 0.3)';
+                    highlight.style.color = '#00ff00';
+                }
+            });
+
+            item.addEventListener('pointerleave', function(e) {
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                    icon.style.color = '#01fc0a';
+                }
+                
+                const highlight = this.querySelector('.highlight');
+                if (highlight) {
+                    highlight.style.backgroundColor = 'rgba(1, 252, 10, 0.15)';
+                    highlight.style.color = '#01fc0a';
+                }
+            });
+        });
+
+        const headers = document.querySelectorAll('h1, h2');
+        headers.forEach(header => {
+            header.addEventListener('pointerenter', function(e) {
+                this.style.textShadow = '0 0 20px rgba(1, 252, 10, 0.7), 0 0 30px rgba(1, 252, 10, 0.5)';
+            });
+
+            header.addEventListener('pointerleave', function(e) {
+                this.style.textShadow = '2px 2px 4px rgba(33, 25, 2, 0.411), 3px 4px 4px rgba(33, 25, 2, 0.411), 4px 6px 4px rgba(33, 25, 2, 0.411), 5px 8px 4px rgba(33, 25, 2, 0.411)';
+            });
+        });
+
+        const mainElement = document.querySelector('main');
+        if (mainElement) {
+            mainElement.addEventListener('pointerenter', function(e) {
+                document.querySelector('.overlay').style.backgroundColor = 'rgba(0, 40, 0, 0.5)';
+            });
+
+            mainElement.addEventListener('pointerleave', function(e) {
+                document.querySelector('.overlay').style.backgroundColor = 'rgba(0, 20, 0, 0.4)';
+            });
+        }
+
+        const navElement = document.querySelector('nav');
+        if (navElement) {
+            navElement.addEventListener('pointerenter', function(e) {
+                this.style.borderTop = '2px solid #00ff00';
+                this.style.paddingTop = '10px';
+                this.style.marginTop = '15px';
+                this.style.transition = 'all 0.3s ease';
+            });
+
+            navElement.addEventListener('pointerleave', function(e) {
+                this.style.borderTop = 'none';
+                this.style.paddingTop = '0';
+                this.style.marginTop = '20px';
+            });
+        }
+    });
+    </script>
+</body>
+</html>

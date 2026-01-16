@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О поездках</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+       <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" href="rad.png.png" type="image/png">
+    <style>
+        body {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+            3px 4px 4px rgba(33, 25, 2, 0.411),
+            4px 6px 4px rgba(33, 25, 2, 0.411),
+            5px 8px 4px rgba(33, 25, 2, 0.411);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #f0f0f0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #043001 100%);
+            animation: gradientShift 10s ease infinite alternate;
+            background-size: 200% 200%;
+            padding: 20px;
+            margin: 0;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            50% {
+                background-position: 100% 50%;
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, #01fc0a 0%, #0A0A0A 50%, #056216 100%);
+            }
+            100% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+        }
+
+        header {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+            3px 4px 4px rgba(33, 25, 2, 0.411),
+            4px 6px 4px rgba(33, 25, 2, 0.411),
+            5px 8px 4px rgba(33, 25, 2, 0.411);
+            background: rgba(30, 30, 30, 0.9);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 2px solid #01fc0a;
+        }
+
+        h1 {
+            font-family: 'Arial Black';
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #00d406, #01fc0a);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+                         3px 4px 4px rgba(33, 25, 2, 0.411),
+                         4px 6px 4px rgba(33, 25, 2, 0.411),
+                         5px 8px 4px rgba(33, 25, 2, 0.411);
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+            3px 4px 4px rgba(33, 25, 2, 0.411),
+            4px 6px 4px rgba(33, 25, 2, 0.411),
+            5px 8px 4px rgba(33, 25, 2, 0.411);
+            color: #01fc0a;
+            margin-bottom: 25px;
+            font-size: 2em;
+            border-bottom: 2px solid #01fc0a;
+            padding-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        h3, h4, h5, h6 {
+            color: #01fc0a;
+            margin: 25px 0 15px 0;
+            padding-left: 15px;
+            border-left: 4px solid #01fc0a;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        h3 { font-size: 1.7em; }
+        h4 { font-size: 1.5em; }
+        h5 { font-size: 1.4em; }
+        h6 { font-size: 1.3em; }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .btn-slide {
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 180px;
+            line-height: 50px;
+            padding: 0;
+            border-radius: 50px;
+            background: rgba(1, 252, 10, 0.1);
+            border: 2px solid #01fc0a;
+            margin: 10px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-slide:hover {
+            background: rgba(1, 252, 10, 0.2);
+            width: 200px;
+        }
+
+        .btn-slide:hover .circle {
+            left: calc(100% - 52px);
+        }
+
+        .btn-slide:hover .title {
+            left: 60px;
+        }
+
+        .btn-slide:hover .title-hover {
+            left: 60px;
+            opacity: 1;
+        }
+
+        .btn-slide .circle {
+            display: block;
+            background-color: #01fc0a;
+            color: #000;
+            position: absolute;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .btn-slide .circle i {
+            font-size: 20px;
+            line-height: 50px;
+            transition: all 0.4s ease;
+            transform: scale(1);
+        }
+
+        .btn-slide:hover .circle i {
+            transform: scale(1.1);
+        }
+
+        .btn-slide .title,
+        .btn-slide .title-hover {
+            position: absolute;
+            left: 80px;
+            margin: 0;
+            text-align: center;
+            margin: 0;
+            color: #01fc0a;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            z-index: 1;
+            width: 100px;
+        }
+
+        .btn-slide .title-hover {
+            left: 150px;
+            opacity: 0;
+            color: #00d406;
+        }
+
+        .btn-slide .title {
+            opacity: 1;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tour-section, .requirements-section, .organization-section {
+            background: rgba(40, 40, 40, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 2px solid #01fc0a;
+        }
+
+        .tour-section:hover, .requirements-section:hover, .organization-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .tour-item {
+            background: rgba(1, 252, 10, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 4px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        .tour-item:hover {
+            background: rgba(1, 252, 10, 0.15);
+            transform: translateX(10px);
+        }
+
+        .tour-item p {
+            color: #E0E0E0;
+            margin: 10px 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #01fc0a;
+            font-weight: 600;
+            background: rgba(1, 252, 10, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: block;
+            border: 2px solid #01fc0a;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-list li {
+            background: rgba(1, 252, 10, 0.05);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        .info-list li:hover {
+            background: rgba(1, 252, 10, 0.1);
+            transform: translateX(5px);
+        }
+
+        .info-list li i {
+            color: #01fc0a;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 25px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-top: 3px solid #01fc0a;
+            border: 2px solid #01fc0a;
+        }
+
+        footer p {
+            color: #01fc0a;
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #00d406;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #01fc0a;
+            text-decoration: underline;
+        }
+
+        /* Кнопка "Наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            border: 2px solid #01fc0a;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(1, 252, 10, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(1, 252, 10, 0.5);
+            background: linear-gradient(135deg, #01fc0a, #00d406);
+        }
+
+        .back-to-top.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Сайт студента группы ПИ25А Дубовик Веры Александровны</h1>
+        
+        <nav>
+            <a class="btn-slide" href="index.html">
+                <span class="circle">
+                    <i class="fas fa-home"></i>
+                </span>
+                <span class="title">Главная</span>
+            </a>
+            
+            <a class="btn-slide" href="about.html">
+                <span class="circle">
+                    <i class="fas fa-bus"></i>
+                </span>
+                <span class="title">О поездках</span>
+            </a>
+            
+            <a class="btn-slide" href="contacts.html">
+                <span class="circle">
+                    <i class="fas fa-phone"></i>
+                </span>
+                <span class="title">Контакты</span>
+            </a>
+
+                <a class="btn-slide" href="static.html">
+          <span class="circle">
+                       <i class="fas fa-chart-line"></i>
+          </span>
+          <span class="title">Статистика</span>
+        </a>
+
+        
+             <a class="btn-slide" href="history.html">
+          <span class="circle">
+            <i class="fas fa-history"></i>
+          </span>
+          <span class="title">История</span>
+        </a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrapper">
+            <div class="tour-section">
+                <h2><i class="fas fa-map-marked-alt"></i> О наших поездках</h2>
+                <img src="pripyat.png" alt="Припять" width="350">
+                
+                <div class="tour-item">
+                    <h3><i class="fas fa-calendar-day"></i> Классический однодневный тур</h3>
+                    <p><span class="highlight"><i class="far fa-clock"></i> Длительность:</span> 12-14 часов</p>
+                    <p><span class="highlight"><i class="fas fa-route"></i> Расстояние:</span> 250 км от Киева</p>
+                    <p><span class="highlight"><i class="fas fa-map-marker-alt"></i> Основные объекты:</span> город Припять, Чернобыльская АЭС, Рыжий лес, город Чернобыль</p>
+                    <p><span class="highlight"><i class="fas fa-dollar-sign"></i> Стоимость:</span> от 100$ с человека</p>
+                </div>
+
+                <div class="tour-item">
+                    <h4><i class="fas fa-calendar-week"></i> Программа глубокого погружения (2 дня)</h4>
+                    <p><span class="highlight"><i class="fas fa-bed"></i> Проживание:</span> 2 дня с ночевкой в гостинице Зоны</p>
+                    <p><span class="highlight"><i class="fas fa-route"></i> Расстояние:</span> 250 км + внутренние маршруты по Зоне</p>
+                    <p><span class="highlight"><i class="fas fa-map-marker-alt"></i> Основные объекты:</span> все объекты однодневного тура + загоризонтная РЛС "Дуга" (Чернобыль-2), секретные объекты, встреча с самосёлами</p>
+                    <p><span class="highlight"><i class="fas fa-star"></i> Особенность:</span> вечерняя прогулка по Припяти</p>
+                    <p><span class="highlight"><i class="fas fa-dollar-sign"></i> Стоимость:</span> от 250$ с человека</p>
+                </div>
+            </div>
+
+            <div>
+                <div class="organization-section">
+                    <h5><i class="fas fa-tasks"></i> ОРГАНИЗАЦИЯ ПОЕЗДОК</h5>
+                    <ul class="info-list">
+                        <li><i class="fas fa-play-circle"></i> <span class="highlight">Начало:</span> 7:00 утра, сбор на автовокзале "Южный"</li>
+                        <li><i class="fas fa-bus"></i> <span class="highlight">Транспорт:</span> комфортабельные микроавтобусы с кондиционером</li>
+                        <li><i class="fas fa-shuttle-van"></i> <span class="highlight">Передвижение в Зоне:</span> на специально оборудованных автобусах</li>
+                        <li><i class="fas fa-flag-checkered"></i> <span class="highlight">Возвращение:</span> 20:00-22:00 в Донецк</li>
+                    </ul>
+                </div>
+
+                <div class="requirements-section">
+                    <h6><i class="fas fa-clipboard-check"></i> ТРЕБОВАНИЯ К УЧАСТНИКАМ</h6>
+                    <ul class="info-list">
+                        <li><i class="fas fa-passport"></i> <span class="highlight">Документы:</span> действующий паспорт (данные требуются за 10 дней для оформления пропуска)</li>
+                        <li><i class="fas fa-user"></i> <span class="highlight">Возраст:</span> от 18 лет</li>
+                        <li><i class="fas fa-tshirt"></i> <span class="highlight">Одежда:</span> удобная закрытая одежда и обувь для ходьбы</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> <span class="highlight">Ограничения:</span> поездка не рекомендуется беременным женщинам</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <footer>
+        <p>Почитать о Чернобыле <i class="fas fa-arrow-down"></i></p>
+        <p><a href="https://ru.wikipedia.org/wiki/Чернобыль">https://ru.wikipedia.org/wiki/Чернобыль</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Страница "О поездках" загружена');
+            
+            const sections = document.querySelectorAll('.tour-section, .requirements-section, .organization-section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.6s ease-out';
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 300 + index * 200);
+            });
+
+            const buttons = document.querySelectorAll('.btn-slide');
+            buttons.forEach((button, index) => {
+                button.style.opacity = '0';
+                button.style.transform = 'translateY(10px)';
+                
+                setTimeout(() => {
+                    button.style.opacity = '1';
+                    button.style.transform = 'translateY(0)';
+                    button.style.transition = 'all 0.5s ease-out';
+                }, 500 + index * 100);
+            });
+
+            const listItems = document.querySelectorAll('.info-list li');
+            listItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(-20px)';
+                
+                setTimeout(() => {
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateX(0)';
+                    item.style.transition = 'all 0.4s ease-out';
+                }, 700 + index * 50);
+            });
+        });
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const clickableElements = document.querySelectorAll(
+            'a, button, .btn-slide, .submit-btn, .calc-btn, .array-button, .help-button, .wiki-link'
+        );
+        
+        const hoverElements = document.querySelectorAll(
+            '.content-wrapper, .tour-section, .requirements-section, .organization-section, .tour-item, .info-list li'
+        );
+
+        document.addEventListener('pointerdown', function(e) {
+            if (e.target.closest('a, button, .btn-slide, .submit-btn')) {
+                e.target.style.transform = 'scale(0.98)';
+                e.target.style.transition = 'transform 0.1s ease';
+            }
+        });
+
+        document.addEventListener('pointerup', function(e) {
+            if (e.target.closest('a, button, .btn-slide, .submit-btn')) {
+                e.target.style.transform = 'scale(1)';
+            }
+        });
+
+        clickableElements.forEach(element => {
+            element.addEventListener('pointerover', function(e) {
+                this.style.cursor = 'pointer';
+                if (!this.classList.contains('btn-slide')) {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 5px 15px rgba(1, 252, 10, 0.3)';
+                    this.style.transition = 'all 0.3s ease';
+                }
+            });
+
+            element.addEventListener('pointerout', function(e) {
+                if (!this.classList.contains('btn-slide')) {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+
+            element.addEventListener('pointerenter', function(e) {
+                if (!this.style.cursor) {
+                    this.style.cursor = 'pointer';
+                }
+            });
+
+            element.addEventListener('pointerleave', function(e) {
+                this.style.transform = 'scale(1)';
+            });
+
+            element.addEventListener('pointermove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                if (this.classList.contains('tour-section') || 
+                    this.classList.contains('requirements-section') || 
+                    this.classList.contains('organization-section') ||
+                    this.classList.contains('tour-item')) {
+                    const glowX = (x / rect.width) * 100;
+                    const glowY = (y / rect.height) * 100;
+                    this.style.background = `
+                        radial-gradient(circle at ${glowX}% ${glowY}%, 
+                        rgba(1, 252, 10, 0.1) 0%, 
+                        rgba(40, 40, 40, 0.8) 70%
+                    )`;
+                }
+            });
+        });
+
+        hoverElements.forEach(element => {
+            element.addEventListener('pointerenter', function(e) {
+                if (!this.classList.contains('tour-section') && 
+                    !this.classList.contains('requirements-section') && 
+                    !this.classList.contains('organization-section')) {
+                    this.style.backgroundColor = 'rgba(1, 252, 10, 0.08)';
+                }
+            });
+
+            element.addEventListener('pointerleave', function(e) {
+                if (!this.classList.contains('tour-section') && 
+                    !this.classList.contains('requirements-section') && 
+                    !this.classList.contains('organization-section')) {
+                    this.style.backgroundColor = '';
+                }
+            });
+        });
+
+        document.addEventListener('pointermove', function(e) {
+            if (e.pointerType === 'mouse') {
+                document.body.style.cursor = 'default';
+            }
+        });
+
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            img.addEventListener('pointerenter', function(e) {
+                this.style.transform = 'scale(1.05) rotate(1deg)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+
+            img.addEventListener('pointerleave', function(e) {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+        
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('pointerdown', function(e) {
+                this.style.color = '#00ff00';
+            });
+            
+            link.addEventListener('pointerup', function(e) {
+                this.style.color = '#00d406';
+            });
+        });
+
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        backToTopBtn.addEventListener('pointerdown', function(e) {
+            this.style.transform = 'scale(0.9)';
+        });
+
+        backToTopBtn.addEventListener('pointerup', function(e) {
+            this.style.transform = 'scale(1)';
+        });
+
+        backToTopBtn.addEventListener('pointerover', function(e) {
+            this.style.cursor = 'pointer';
+        });
+
+        backToTopBtn.addEventListener('pointerenter', function(e) {
+            this.style.boxShadow = '0 0 20px rgba(1, 252, 10, 0.7)';
+        });
+
+        backToTopBtn.addEventListener('pointerleave', function(e) {
+            this.style.boxShadow = '0 4px 15px rgba(1, 252, 10, 0.3)';
+        });
+
+        const infoListItems = document.querySelectorAll('.info-list li');
+        infoListItems.forEach(item => {
+            item.addEventListener('pointerenter', function(e) {
+                this.style.backgroundColor = 'rgba(1, 252, 10, 0.15)';
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+
+            item.addEventListener('pointerleave', function(e) {
+                this.style.backgroundColor = 'rgba(1, 252, 10, 0.05)';
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+
+        const tourItems = document.querySelectorAll('.tour-item');
+        tourItems.forEach(item => {
+            item.addEventListener('pointerenter', function(e) {
+                this.style.backgroundColor = 'rgba(1, 252, 10, 0.2)';
+                this.style.transform = 'translateX(15px) scale(1.02)';
+            });
+
+            item.addEventListener('pointerleave', function(e) {
+                this.style.backgroundColor = 'rgba(1, 252, 10, 0.1)';
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+    });
+    </script>
+</body>
+</html>

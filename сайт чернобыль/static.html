@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статистика Чернобыльских туров</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="icon" href="rad.png.png" type="image/png">
+
+    <style>
+        body {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+             3px 4px 4px rgba(33, 25, 2, 0.411),
+             4px 6px 4px rgba(33, 25, 2, 0.411),
+             5px 8px 4px rgba(33, 25, 2, 0.411);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #f0f0f0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #8B8000 0%, #000000 50%, #5D4037 100%);
+            animation: gradientShift 10s ease infinite alternate;
+            background-size: 200% 200%;
+            padding: 20px;
+            margin: 0;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            25% {
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            50% {
+                background-position: 100% 50%;
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+            75% {
+                background: linear-gradient(135deg, #01fc0a 0%, #0A0A0A 50%, #056216 100%);
+            }
+            100% {
+                background-position: 0% 50%;
+                background: linear-gradient(135deg, #01fc0a 0%, #000000 50%, #056216 100%);
+            }
+        }
+
+        header {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+             3px 4px 4px rgba(33, 25, 2, 0.411),
+             4px 6px 4px rgba(33, 25, 2, 0.411),
+             5px 8px 4px rgba(33, 25, 2, 0.411);
+            background: rgba(30, 30, 30, 0.9);
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 2px solid #01fc0a;
+        }
+
+        h1 {
+            font-family: 'Arial Black';
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #00d406, #01fc0a);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+                         3px 4px 4px rgba(33, 25, 2, 0.411),
+                         4px 6px 4px rgba(33, 25, 2, 0.411),
+                         5px 8px 4px rgba(33, 25, 2, 0.411);
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-family: 'Arial Black';
+            font-size: 25px;
+            font-weight: 600;
+            background-image: linear-gradient(to left, #00d406, #01fc0a);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+                         3px 4px 4px rgba(33, 25, 2, 0.411),
+                         4px 6px 4px rgba(33, 25, 2, 0.411),
+                         5px 8px 4px rgba(33, 25, 2, 0.411);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn-slide {
+            position: relative;
+            display: inline-block;
+            height: 50px;
+            width: 180px;
+            line-height: 50px;
+            padding: 0;
+            border-radius: 50px;
+            background: rgba(1, 252, 10, 0.1);
+            border: 2px solid #01fc0a;
+            margin: 10px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .btn-slide:hover {
+            background: rgba(1, 252, 10, 0.2);
+            width: 200px;
+        }
+
+        .btn-slide:hover .circle {
+            left: calc(100% - 52px);
+        }
+
+        .btn-slide:hover .title {
+            left: 60px;
+        }
+
+        .btn-slide:hover .title-hover {
+            left: 60px;
+            opacity: 1;
+        }
+
+        .btn-slide .circle {
+            display: block;
+            background-color: #01fc0a;
+            color: #000;
+            position: absolute;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .btn-slide .circle i {
+            font-size: 20px;
+            line-height: 50px;
+            transition: all 0.4s ease;
+            transform: scale(1);
+        }
+
+        .btn-slide:hover .circle i {
+            transform: scale(1.1);
+        }
+
+        .btn-slide .title,
+        .btn-slide .title-hover {
+            position: absolute;
+            left: 80px;
+            margin: 0;
+            text-align: center;
+            margin: 0;
+            color: #01fc0a;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            z-index: 1;
+            width: 100px;
+        }
+
+        .btn-slide .title-hover {
+            left: 150px;
+            opacity: 0;
+            color: #00d406;
+        }
+
+        .btn-slide .title {
+            opacity: 1;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section {
+            background: rgba(40, 40, 40, 0.8);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            border: 2px solid #01fc0a;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        h2 {
+            text-shadow: 2px 2px 4px rgba(33, 25, 2, 0.411),
+             3px 4px 4px rgba(33, 25, 2, 0.411),
+             4px 6px 4px rgba(33, 25, 2, 0.411),
+             5px 8px 4px rgba(33, 25, 2, 0.411);
+            color: #01fc0a;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #01fc0a;
+            padding-bottom: 10px;
+        }
+
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .section-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .text-content {
+            padding: 20px;
+        }
+
+        p {
+            color: #E0E0E0;
+            margin: 15px 0;
+            font-size: 1.1em;
+            line-height: 1.7;
+            background: rgba(1, 252, 10, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        p:hover {
+            background: rgba(1, 252, 10, 0.1);
+            transform: translateX(5px);
+        }
+
+        .highlight {
+            color: #01fc0a;
+            font-weight: 600;
+            background: rgba(1, 252, 10, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .divider {
+            height: 2px;
+            background: #00cc00;
+            margin: 30px 0;
+            opacity: 0.3;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 25px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-top: 3px solid #01fc0a;
+            border: 2px solid #01fc0a;
+        }
+
+        footer p {
+            color: #01fc0a;
+            margin-bottom: 10px;
+            background: none;
+            border-left: none;
+            padding: 0;
+            transition: none;
+            transform: none;
+        }
+
+        footer p:hover {
+            background: none;
+            transform: none;
+        }
+
+        footer a {
+            color: #00d406;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #01fc0a;
+            text-decoration: underline;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(0, 204, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 4px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(1, 252, 10, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(1, 252, 10, 0.2);
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            color: #01fc0a;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(1, 252, 10, 0.3);
+        }
+
+        .timers-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .timer-item {
+            background: rgba(0, 204, 0, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        .timer-item:hover {
+            background: rgba(1, 252, 10, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(1, 252, 10, 0.2);
+        }
+
+        .timer-title {
+            color: #01fc0a;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .timer-value {
+            font-size: 32px;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(0, 204, 0, 0.5);
+        }
+
+        .timer-date {
+            color: #aaa;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .array-section {
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 10px;
+            padding: 25px;
+            border: 2px solid #01fc0a;
+            margin-top: 30px;
+            grid-column: 1 / -1;
+            transition: all 0.3s ease;
+        }
+
+        .array-section:hover {
+            background: rgba(1, 252, 10, 0.1);
+            box-shadow: 0 5px 15px rgba(1, 252, 10, 0.2);
+        }
+
+        .array-title {
+            color: #01fc0a;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .array-controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .array-button {
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .array-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(1, 252, 10, 0.4);
+            background: linear-gradient(135deg, #01fc0a, #00d406);
+        }
+
+        .array-output {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            border: 1px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        .array-output:hover {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #00ff00;
+        }
+
+        .result-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(1, 252, 10, 0.1);
+            border-radius: 5px;
+            border-left: 3px solid #01fc0a;
+            transition: all 0.3s ease;
+        }
+
+        .result-item:hover {
+            background: rgba(1, 252, 10, 0.2);
+            transform: translateX(5px);
+        }
+
+        .result-highlight {
+            color: #01fc0a;
+            font-weight: bold;
+        }
+
+        .year-display {
+            color: #01fc0a;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #006603, #01fc0a);
+            color: #000;
+            border: 2px solid #01fc0a;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(1, 252, 10, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(1, 252, 10, 0.5);
+            background: linear-gradient(135deg, #01fc0a, #00d406);
+        }
+
+        .back-to-top.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Сайт студента группы ПИ25А Дубовик Веры Александровны</h1>
+      <p>Статистика Чернобыльских туров</p>
+      
+      <nav>
+        <a class="btn-slide" href="index.html">
+          <span class="circle">
+            <i class="fas fa-home"></i>
+          </span>
+          <span class="title">Главная</span>
+        </a>
+        
+        <a class="btn-slide" href="about.html">
+          <span class="circle">
+            <i class="fas fa-bus"></i>
+          </span>
+          <span class="title">О поездках</span>
+        </a>
+        
+        <a class="btn-slide" href="contacts.html">
+          <span class="circle">
+            <i class="fas fa-phone"></i>
+          </span>
+          <span class="title">Контакты</span>
+        </a>
+
+        <a class="btn-slide" href="static.html">
+          <span class="circle">
+            <i class="fas fa-chart-line"></i>
+          </span>
+          <span class="title">Статистика</span>
+        </a>
+
+        
+             <a class="btn-slide" href="history.html">
+          <span class="circle">
+            <i class="fas fa-history"></i>
+          </span>
+          <span class="title">История</span>
+        </a>
+      </nav>
+    </header>
+    
+    <main>
+      <div class="container">
+        <div class="content-section">
+          <h2><i class="fas fa-chart-line"></i> Статистика Чернобыльских туров</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-label">Текущий год</div>
+              <div class="stat-value" id="currentYear">2026</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Количество записей</div>
+              <div class="stat-value">1234</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Всего посетителей</div>
+              <div class="stat-value">15,678</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Среднее за день</div>
+              <div class="stat-value">43 чел.</div>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <h2><i class="fas fa-dollar-sign"></i> Стоимость туров</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-label">Минимальная цена</div>
+              <div class="stat-value">100 $</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Средняя стоимость</div>
+              <div class="stat-value">175 $</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Максимальная цена</div>
+              <div class="stat-value">250 $</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-label">Скидка группами</div>
+              <div class="stat-value">10%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <h2><i class="fas fa-clock"></i> Чернобыльские таймеры</h2>
+          <div class="timers-grid">
+            <div class="timer-item">
+              <div class="timer-title">С момента аварии</div>
+              <div class="timer-value" id="accidentTimer">39 лет 262 дней</div>
+              <div class="timer-date">26 апреля 1986 года, 01:23:44</div>
+            </div>
+            <div class="timer-item">
+              <div class="timer-title">С основания Припяти</div>
+              <div class="timer-value" id="prypiatTimer">55 лет 343 дней</div>
+              <div class="timer-date">4 февраля 1970 года</div>
+            </div>
+            <div class="timer-item">
+              <div class="timer-title">С основания ЧАЭС</div>
+              <div class="timer-value" id="chaesTimer">55 лет 134 дней</div>
+              <div class="timer-date">1 сентября 1970 года</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="array-section">
+          <h2><i class="fas fa-code"></i> Работа с массивами</h2>
+          <div class="year-display">Текущий год: <span id="yearValue"></span></div>
+          <div class="array-controls">
+            <button class="array-button" onclick="generateAndDisplayArray()">Сгенерировать массив</button>
+            <button class="array-button" onclick="findLastPositive()">Найти последний положительный</button>
+            <button class="array-button" onclick="findLastMultipleOfThree()">Найти последний кратный 3</button>
+            <button class="array-button" onclick="countPositiveElements()">Посчитать положительные</button>
+            <button class="array-button" onclick="countNegativeElements()">Посчитать отрицательные</button>
+          </div>
+          <div class="array-output" id="arrayOutput">
+            Массив еще не сгенерирован. Нажмите "Сгенерировать массив".
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <footer>
+      <p>Почитать о Чернобыле <i class="fas fa-arrow-down"></i></p>
+      <p>
+        <a href="https://ru.wikipedia.org/wiki/Чернобыль">https://ru.wikipedia.org/wiki/Чернобыль</a>
+      </p>
+    </footer>
+
+<script>
+let numbers = [];
+const currentYear = new Date().getFullYear();
+document.getElementById('currentYear').textContent = currentYear;
+document.getElementById('yearValue').textContent = currentYear;
+
+const generateArray = (length, max) => (
+  [...new Array(length)]
+    .map(() => Math.round(Math.random() * max) - 500 )
+);
+
+function generateAndDisplayArray() {
+    numbers = generateArray(currentYear, 1000);
+    const output = document.getElementById('arrayOutput');
+    const preview = numbers.slice(0, 20).join(', ');
+    const total = numbers.length;
+    output.innerHTML = `Массив сгенерирован. Размер массива: ${total} элементов (текущий год: ${currentYear})\n\n` +
+                      `Первые 20 элементов:\n${preview}\n\n` +
+                      `... и еще ${total - 20} элементов`;
+}
+
+function findLastPositive() {
+    if (numbers.length === 0) {
+        alert('Сначала сгенерируйте массив!');
+        return;
+    }
+    
+    let lastIndex = -1;
+    let lastValue = null;
+    
+    for (let i = numbers.length - 1; i >= 0; i--) {
+        if (numbers[i] > 0) {
+            lastIndex = i;
+            lastValue = numbers[i];
+            break;
+        }
+    }
+    
+    const output = document.getElementById('arrayOutput');
+    if (lastIndex !== -1) {
+        output.innerHTML = `Поиск последнего положительного элемента с конца массива:\n\n` +
+                          `<div class="result-item">Индекс в массиве: <span class="result-highlight">${lastIndex}</span></div>` +
+                          `<div class="result-item">Значение: <span class="result-highlight">${lastValue}</span></div>` +
+                          `<div class="result-item">Количество элементов: <span class="result-highlight">1</span></div>`;
+    } else {
+        output.innerHTML = `Поиск последнего положительного элемента:\n\n` +
+                          `<div class="result-item">Положительные элементы не найдены</div>`;
+    }
+}
+
+function findLastMultipleOfThree() {
+    if (numbers.length === 0) {
+        alert('Сначала сгенерируйте массив!');
+        return;
+    }
+    
+    let lastIndex = -1;
+    let lastValue = null;
+    let count = 0;
+    
+    for (let i = numbers.length - 1; i >= 0; i--) {
+        if (numbers[i] % 3 === 0 && numbers[i] !== 0) {
+            if (count === 0) {
+                lastIndex = i;
+                lastValue = numbers[i];
+            }
+            count++;
+        }
+    }
+    
+    const output = document.getElementById('arrayOutput');
+    if (count > 0) {
+        output.innerHTML = `Поиск последнего элемента кратного 3 с конца массива:\n\n` +
+                          `<div class="result-item">Индекс в массиве: <span class="result-highlight">${lastIndex}</span></div>` +
+                          `<div class="result-item">Значение: <span class="result-highlight">${lastValue}</span></div>` +
+                          `<div class="result-item">Количество элементов кратных 3: <span class="result-highlight">${count}</span></div>`;
+    } else {
+        output.innerHTML = `Поиск элементов кратных 3:\n\n` +
+                          `<div class="result-item">Элементы кратные 3 не найдены</div>`;
+    }
+}
+
+function countPositiveElements() {
+    if (numbers.length === 0) {
+        alert('Сначала сгенерируйте массив!');
+        return;
+    }
+    
+    let count = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] > 0) {
+            count++;
+        }
+    }
+    
+    const output = document.getElementById('arrayOutput');
+    output.innerHTML = `Подсчет положительных элементов:\n\n` +
+                      `<div class="result-item">Количество положительных элементов: <span class="result-highlight">${count}</span></div>` +
+                      `<div class="result-item">Всего элементов в массиве: <span class="result-highlight">${numbers.length}</span></div>`;
+}
+
+function countNegativeElements() {
+    if (numbers.length === 0) {
+        alert('Сначала сгенерируйте массив!');
+        return;
+    }
+    
+    let count = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        if (numbers[i] < 0) {
+            count++;
+        }
+    }
+    
+    const output = document.getElementById('arrayOutput');
+    output.innerHTML = `Подсчет отрицательных элементов:\n\n` +
+                      `<div class="result-item">Количество отрицательных элементов: <span class="result-highlight">${count}</span></div>` +
+                      `<div class="result-item">Всего элементов в массиве: <span class="result-highlight">${numbers.length}</span></div>`;
+}
+
+const accidentDate = new Date(1986, 3, 26, 1, 23, 44);
+const prypiatDate = new Date(1970, 1, 4);
+const chaesDate = new Date(1970, 8, 1);
+const now = new Date();
+
+function calculateTimeDiff(startDate, endDate) {
+    const diff = endDate - startDate;
+    const years = Math.floor(diff / (365.25 * 24 * 60 * 60 * 1000));
+    const days = Math.floor((diff % (365.25 * 24 * 60 * 60 * 1000)) / (24 * 60 * 60 * 1000));
+    return `${years} лет ${days} дней`;
+}
+
+document.getElementById('accidentTimer').textContent = calculateTimeDiff(accidentDate, now);
+document.getElementById('prypiatTimer').textContent = calculateTimeDiff(prypiatDate, now);
+document.getElementById('chaesTimer').textContent = calculateTimeDiff(chaesDate, now);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.content-section');
+    sections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'all 0.6s ease-out';
+        
+        setTimeout(() => {
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }, 300 + index * 200);
+    });
+
+    const buttons = document.querySelectorAll('.btn-slide');
+    buttons.forEach((button, index) => {
+        button.style.opacity = '0';
+        button.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+            button.style.opacity = '1';
+            button.style.transform = 'translateY(0)';
+            button.style.transition = 'all 0.5s ease-out';
+        }, 500 + index * 100);
+    });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const clickableElements = document.querySelectorAll(
+        'a, button, .btn-slide, .submit-btn, .calc-btn, .array-button, .help-button, .wiki-link'
+    );
+    
+    const hoverElements = document.querySelectorAll(
+        '.content-section, .stat-item, .timer-item, p, .benefits-list li, .safety-item, .tour-item, .info-list li, .array-section, .result-item'
+    );
+
+    document.addEventListener('pointerdown', function(e) {
+        if (e.target.closest('a, button, .btn-slide, .submit-btn, .array-button')) {
+            e.target.style.transform = 'scale(0.98)';
+            e.target.style.transition = 'transform 0.1s ease';
+        }
+    });
+
+    document.addEventListener('pointerup', function(e) {
+        if (e.target.closest('a, button, .btn-slide, .submit-btn, .array-button')) {
+            e.target.style.transform = 'scale(1)';
+        }
+    });
+
+    clickableElements.forEach(element => {
+        element.addEventListener('pointerover', function(e) {
+            this.style.cursor = 'pointer';
+            if (!this.classList.contains('btn-slide')) {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 5px 15px rgba(1, 252, 10, 0.3)';
+                this.style.transition = 'all 0.3s ease';
+            }
+        });
+
+        element.addEventListener('pointerout', function(e) {
+            if (!this.classList.contains('btn-slide')) {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
+            }
+        });
+
+        element.addEventListener('pointerenter', function(e) {
+            if (!this.style.cursor) {
+                this.style.cursor = 'pointer';
+            }
+        });
+
+        element.addEventListener('pointerleave', function(e) {
+            this.style.transform = 'scale(1)';
+        });
+
+        element.addEventListener('pointermove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            if (this.classList.contains('content-section') || 
+                this.classList.contains('stat-item') || 
+                this.classList.contains('timer-item') ||
+                this.classList.contains('array-section')) {
+                const glowX = (x / rect.width) * 100;
+                const glowY = (y / rect.height) * 100;
+                this.style.background = `
+                    radial-gradient(circle at ${glowX}% ${glowY}%, 
+                    rgba(1, 252, 10, 0.1) 0%, 
+                    rgba(40, 40, 40, 0.8) 70%
+                )`;
+            }
+        });
+    });
+
+    hoverElements.forEach(element => {
+        element.addEventListener('pointerenter', function(e) {
+            if (!this.classList.contains('content-section') && 
+                !this.classList.contains('stat-item') && 
+                !this.classList.contains('timer-item') &&
+                !this.classList.contains('array-section')) {
+                this.style.backgroundColor = 'rgba(1, 252, 10, 0.08)';
+            }
+        });
+
+        element.addEventListener('pointerleave', function(e) {
+            if (!this.classList.contains('content-section') && 
+                !this.classList.contains('stat-item') && 
+                !this.classList.contains('timer-item') &&
+                !this.classList.contains('array-section')) {
+                this.style.backgroundColor = '';
+            }
+        });
+    });
+
+    document.addEventListener('pointermove', function(e) {
+        if (e.pointerType === 'mouse') {
+            document.body.style.cursor = 'default';
+        }
+    });
+
+    const arrayButtons = document.querySelectorAll('.array-button');
+    arrayButtons.forEach(btn => {
+        btn.addEventListener('pointerdown', function(e) {
+            if (e.button === 0) {
+                this.style.background = 'linear-gradient(135deg, #004d00, #00a800)';
+            }
+        });
+        
+        btn.addEventListener('pointerup', function(e) {
+            if (e.button === 0) {
+                this.style.background = 'linear-gradient(135deg, #006603, #01fc0a)';
+            }
+        });
+    });
+
+    const links = document.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('pointerdown', function(e) {
+            this.style.color = '#00ff00';
+        });
+        
+        link.addEventListener('pointerup', function(e) {
+            this.style.color = '#00d406';
+        });
+    });
+
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    backToTopBtn.addEventListener('pointerdown', function(e) {
+        this.style.transform = 'scale(0.9)';
+    });
+
+    backToTopBtn.addEventListener('pointerup', function(e) {
+        this.style.transform = 'scale(1)';
+    });
+
+    backToTopBtn.addEventListener('pointerover', function(e) {
+        this.style.cursor = 'pointer';
+    });
+
+    backToTopBtn.addEventListener('pointerenter', function(e) {
+        this.style.boxShadow = '0 0 20px rgba(1, 252, 10, 0.7)';
+    });
+
+    backToTopBtn.addEventListener('pointerleave', function(e) {
+        this.style.boxShadow = '0 4px 15px rgba(1, 252, 10, 0.3)';
+    });
+
+    const statItems = document.querySelectorAll('.stat-item');
+    statItems.forEach(item => {
+        item.addEventListener('pointerenter', function(e) {
+            const valueElement = this.querySelector('.stat-value');
+            if (valueElement) {
+                const originalValue = valueElement.textContent;
+                const value = parseInt(originalValue.replace(/[^0-9]/g, ''));
+                if (!isNaN(value)) {
+                    valueElement.textContent = (value + 1) + (originalValue.includes('$') ? ' $' : '');
+                    valueElement.style.color = '#00ff00';
+                    valueElement.style.textShadow = '0 0 10px rgba(0, 255, 0, 0.7)';
+                    
+                    setTimeout(() => {
+                        valueElement.textContent = originalValue;
+                        valueElement.style.color = '#01fc0a';
+                        valueElement.style.textShadow = '0 0 5px rgba(1, 252, 10, 0.3)';
+                    }, 2000);
+                }
+            }
+        });
+    });
+
+    const arrayOutput = document.getElementById('arrayOutput');
+    if (arrayOutput) {
+        arrayOutput.addEventListener('pointerenter', function(e) {
+            this.style.borderColor = '#00ff00';
+            this.style.boxShadow = '0 0 15px rgba(1, 252, 10, 0.3)';
+        });
+
+        arrayOutput.addEventListener('pointerleave', function(e) {
+            this.style.borderColor = '#01fc0a';
+            this.style.boxShadow = 'none';
+        });
+    }
+});
+</script>
+</body>
+</html>
