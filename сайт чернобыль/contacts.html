@@ -332,6 +332,156 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @media (max-width: 768px) {
+    body {
+        text-shadow: 1px 1px 2px rgba(33,25,2,0.3),2px 2px 3px rgba(33,25,2,0.3);
+        animation: none;
+        background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),url('koleco.jpg') no-repeat center center;
+        background-size: cover;
+        background-attachment: scroll;
+    }
+    header {
+        padding: 15px 10px;
+    }
+    h1 {
+        font-size: 18px;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
+    .btn-slide {
+        width: 100%;
+        max-width: 280px;
+        height: 55px;
+        line-height: 55px;
+        margin: 5px 0;
+    }
+    .btn-slide:hover {
+        width: 100%;
+        max-width: 280px;
+    }
+    .btn-slide .circle {
+        width: 55px;
+        height: 55px;
+    }
+    .btn-slide .circle i {
+        line-height: 55px;
+        font-size: 22px;
+    }
+    .btn-slide .title,.btn-slide .title-hover {
+        font-size: 16px;
+        left: 70px;
+        width: auto;
+    }
+    .btn-slide .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .title,.btn-slide:hover .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .circle {
+        left: calc(100% - 57px);
+    }
+    main {
+        max-width: 100%;
+        margin: 20px 10px;
+        padding: 20px;
+    }
+    .contact-info {
+        gap: 15px;
+    }
+    .contact-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+        padding: 15px;
+        font-size: 0.9em;
+    }
+    .contact-item i {
+        font-size: 20px;
+    }
+    .contact-item p {
+        font-size: 1em;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    footer {
+        padding: 15px 10px;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+    .contact-item:hover,.btn-slide:hover .circle i {
+        transform: none;
+    }
+    .btn-slide:hover {
+        transform: none;
+    }
+}
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        animation: none !important;
+    }
+    .overlay,header,nav,.back-to-top,.btn-slide {
+        display: none !important;
+    }
+    main {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin: 20px !important;
+        padding: 20px !important;
+    }
+    h1,h2 {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+    .contact-item {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        page-break-inside: avoid;
+        padding: 10px !important;
+        margin: 10px 0 !important;
+    }
+    .contact-item i {
+        color: #000 !important;
+    }
+    .highlight {
+        color: #000 !important;
+        background: none !important;
+        font-weight: bold;
+    }
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    footer {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        margin-top: 20px;
+    }
+}
     </style>
 </head>
 <body>
