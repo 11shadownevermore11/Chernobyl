@@ -363,6 +363,169 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        text-shadow: 1px 1px 2px rgba(33,25,2,0.3),2px 2px 3px rgba(33,25,2,0.3);
+        animation: none;
+        background: linear-gradient(135deg,#01fc0a 0%,#000 50%,#043001 100%);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    header {
+        padding: 15px 10px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 18px;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+    h2 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    h3 { font-size: 1.4em; }
+    h4 { font-size: 1.3em; }
+    h5 { font-size: 1.2em; }
+    h6 { font-size: 1.1em; }
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        margin: 20px 0;
+    }
+    .btn-slide {
+        width: 100%;
+        max-width: 280px;
+        height: 55px;
+        line-height: 55px;
+        margin: 5px 0;
+    }
+    .btn-slide:hover {
+        width: 100%;
+        max-width: 280px;
+    }
+    .btn-slide .circle {
+        width: 55px;
+        height: 55px;
+    }
+    .btn-slide .circle i {
+        line-height: 55px;
+        font-size: 22px;
+    }
+    .btn-slide .title,.btn-slide .title-hover {
+        font-size: 16px;
+        left: 70px;
+        width: auto;
+    }
+    .btn-slide .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .title,.btn-slide:hover .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .circle {
+        left: calc(100% - 57px);
+    }
+    main {
+        padding: 0 5px;
+    }
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .tour-section,.requirements-section,.organization-section {
+        padding: 20px 15px;
+        margin: 0;
+        border-radius: 10px;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 15px auto;
+    }
+    .tour-item {
+        padding: 15px;
+        margin: 15px 0;
+    }
+    .info-list li {
+        padding: 12px;
+        margin: 8px 0;
+        font-size: 0.95em;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    footer {
+        padding: 15px 10px;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+    .tour-section:hover,.requirements-section:hover,.organization-section:hover,.tour-item:hover,.info-list li:hover {
+        transform: none;
+    }
+    img:hover {
+        transform: none;
+    }
+    .btn-slide:hover .circle i {
+        transform: none;
+    }
+}
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        animation: none !important;
+    }
+    header,nav,.back-to-top,.btn-slide {
+        display: none !important;
+    }
+    .tour-section,.requirements-section,.organization-section {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    h1,h2,h3,h4,h5,h6 {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+    .tour-item,.info-list li {
+        color: #000 !important;
+        background: #fff !important;
+        border: 1px solid #000 !important;
+        padding: 10px !important;
+        margin: 10px 0 !important;
+    }
+    .highlight {
+        color: #000 !important;
+        background: none !important;
+        font-weight: bold;
+    }
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    img {
+        border: 1px solid #000 !important;
+        max-width: 250px !important;
+    }
+    footer {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        margin-top: 20px;
+    }
+}
     </style>
 </head>
 <body>
