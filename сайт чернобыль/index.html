@@ -483,6 +483,228 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        text-shadow: 1px 1px 2px rgba(33,25,2,0.3),2px 2px 3px rgba(33,25,2,0.3);
+        animation: none;
+        background: linear-gradient(135deg,#01fc0a 0%,#000 50%,#056216 100%);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    header {
+        padding: 15px 10px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 18px;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+    header p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
+    .btn-slide {
+        width: 100%;
+        max-width: 280px;
+        height: 55px;
+        line-height: 55px;
+        margin: 5px 0;
+    }
+    .btn-slide:hover {
+        width: 100%;
+        max-width: 280px;
+    }
+    .btn-slide .circle {
+        width: 55px;
+        height: 55px;
+    }
+    .btn-slide .circle i {
+        line-height: 55px;
+        font-size: 22px;
+    }
+    .btn-slide .title,.btn-slide .title-hover {
+        font-size: 16px;
+        left: 70px;
+        width: auto;
+    }
+    .btn-slide .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .title,.btn-slide:hover .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .circle {
+        left: calc(100% - 57px);
+    }
+    main {
+        padding: 0 5px;
+    }
+    .content-section {
+        padding: 15px 10px;
+        margin: 15px 0;
+        border-radius: 10px;
+    }
+    h2 {
+        font-size: 1.3em;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+    }
+    .section-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .text-content {
+        padding: 5px;
+    }
+    p {
+        font-size: 0.95em;
+        padding: 10px;
+        margin: 8px 0;
+        line-height: 1.5;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    .registration-form {
+        gap: 15px;
+    }
+    .form-group {
+        gap: 6px;
+    }
+    .form-group label {
+        font-size: 14px;
+    }
+    .form-group input,.form-group select {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    .submit-btn {
+        padding: 15px 20px;
+        font-size: 16px;
+    }
+    .calculator {
+        padding: 15px;
+    }
+    .calc-controls {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .calc-group label {
+        font-size: 14px;
+    }
+    .calc-group select,.calc-group input {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+    .calc-btn {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    .calc-result {
+        padding: 15px;
+    }
+    .calc-total {
+        font-size: 22px;
+    }
+    .calc-details {
+        font-size: 12px;
+    }
+    .benefits-list li {
+        padding: 10px;
+        font-size: 0.9em;
+        margin: 8px 0;
+    }
+    .safety-item {
+        padding: 10px;
+        margin: 8px 0;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    footer {
+        padding: 15px 10px;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+    footer p {
+        margin-bottom: 8px;
+    }
+    .content-section:hover {
+        transform: none;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    p:hover {
+        transform: none;
+    }
+    img:hover {
+        transform: none;
+    }
+    .btn-slide:hover .circle i {
+        transform: none;
+    }
+    .calc-btn:hover,.submit-btn:hover {
+        transform: none;
+        box-shadow: 0 5px 15px rgba(1,252,10,0.3);
+    }
+}
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        animation: none !important;
+    }
+    header,nav,.back-to-top,.registration-form,.calculator,.benefits,.login-section,.contact-support,.read-more-section,.submit-btn,.calc-btn {
+        display: none !important;
+    }
+    .content-section {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+    }
+    h1,h2 {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+    p,li {
+        color: #000 !important;
+        background: none !important;
+        border-left: none !important;
+        padding: 5px 0 !important;
+    }
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    img {
+        border: 1px solid #000 !important;
+        max-width: 300px !important;
+    }
+    footer {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        margin-top: 20px;
+    }
+}
     </style>
   </head>
   <body>
