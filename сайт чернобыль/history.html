@@ -424,6 +424,209 @@
             from { opacity : 0; transform: translateY(20px); }
             to { opacity : 1; transform: translateY(0); }
         }
+
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
+        text-shadow: 1px 1px 2px rgba(33,25,2,0.3),2px 2px 3px rgba(33,25,2,0.3);
+        animation: none;
+        background: linear-gradient(135deg,#01fc0a 0%,#000 50%,#056216 100%);
+        background-size: cover;
+        background-attachment: fixed;
+    }
+    header {
+        padding: 15px 10px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 18px;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+    header p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+    nav {
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
+    .btn-slide {
+        width: 100%;
+        max-width: 280px;
+        height: 55px;
+        line-height: 55px;
+        margin: 5px 0;
+    }
+    .btn-slide:hover {
+        width: 100%;
+        max-width: 280px;
+    }
+    .btn-slide .circle {
+        width: 55px;
+        height: 55px;
+    }
+    .btn-slide .circle i {
+        line-height: 55px;
+        font-size: 22px;
+    }
+    .btn-slide .title,.btn-slide .title-hover {
+        font-size: 16px;
+        left: 70px;
+        width: auto;
+    }
+    .btn-slide .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .title,.btn-slide:hover .title-hover {
+        left: 70px;
+    }
+    .btn-slide:hover .circle {
+        left: calc(100% - 57px);
+    }
+    main {
+        padding: 0 5px;
+    }
+    .content-section {
+        padding: 15px 10px;
+        margin: 15px 0;
+        border-radius: 10px;
+    }
+    h2 {
+        font-size: 1.3em;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    .table-title {
+        font-size: 1.1em;
+    }
+    .section-content {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .text-content {
+        padding: 5px;
+    }
+    p {
+        font-size: 0.95em;
+        padding: 10px;
+        margin: 8px 0;
+        line-height: 1.5;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto;
+    }
+    .table-container {
+        padding: 10px;
+        margin: 15px 0;
+        overflow-x: auto;
+    }
+    .history-table {
+        font-size: 0.8em;
+        min-width: 600px;
+    }
+    .history-table th,.history-table td {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    footer {
+        padding: 15px 10px;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+    .content-section:hover,.history-table tr:hover td,p:hover,img:hover {
+        transform: none;
+    }
+    .btn-slide:hover .circle i {
+        transform: none;
+    }
+}
+
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        text-shadow: none !important;
+        animation: none !important;
+    }
+    header,nav,.back-to-top,.btn-slide {
+        display: none !important;
+    }
+    .content-section {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    h1,h2,.table-title {
+        color: #000 !important;
+        text-shadow: none !important;
+    }
+    p {
+        color: #000 !important;
+        background: none !important;
+        border: 1px solid #000 !important;
+        padding: 10px !important;
+        margin: 10px 0 !important;
+    }
+    .table-container {
+        background: #fff !important;
+        border: 1px solid #000 !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .history-table {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+    .history-table th {
+        background: #ddd !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+    .history-table td {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+    }
+    .danger-cell,.safe-cell {
+        background: #fff !important;
+        color: #000 !important;
+    }
+    .fact-highlight,.highlight {
+        color: #000 !important;
+        background: none !important;
+        font-weight: bold;
+    }
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+    img {
+        border: 1px solid #000 !important;
+        max-width: 250px !important;
+    }
+    footer {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        margin-top: 20px;
+    }
+}
     </style>
   </head>
   <body>
@@ -608,14 +811,14 @@
             <p>• Строительство "Укрытия" (Саркофага) было завершено за 206 дней</p>
             <p>• Новый безопасный конфайнмент (НБК) был завершен в 2016 году и рассчитан на 100 лет</p>
           </div>
-          <img width="350" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Chernobyl_NPP_Sarcophagus_2016.jpg/1200px-Chernobyl_NPP_Sarcophagus_2016.jpg" alt="Саркофаг ЧАЭС">
+          <img width="350" src="https://www.atomic-energy.ru/files/images/2020/04/original1.jpg" alt="Саркофаг ЧАЭС">
         </div>
       </div>
       
       <div class="content-section">
         <h2><i class="fas fa-book-open"></i> Историческая справка</h2>
         <div class="section-content">
-          <img width="350" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Pripyat_montage.jpg/800px-Pripyat_montage.jpg" alt="Припять">
+         <img src="pripyat.png" alt="Припять" width="350"> 
           <div class="text-content">
             <p><span class="highlight">Город Припять</span> был основан 4 февраля 1970 года как город-спутник для работников Чернобыльской АЭС. На момент аварии в нем проживало 49,360 человек.</p>
             
